@@ -32,11 +32,12 @@ void Game::_process(float delta) {}
 void Game::_update_delta()
 {
 
-
+/*
     this->oldtime=this->newtime;
     this->newtime=steady_clock::now();
     this->delta=float( duration_cast<microseconds>(newtime - oldtime).count()) / 10000;
-
+*/
+cout << this->debut_game++ << endl;
 
 }
 
