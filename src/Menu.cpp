@@ -43,16 +43,16 @@ int Menu::menuPricipal(){
             for (int i=0; i<4; i++){
                     switch(i){
                 case 0:
-                    cout << "Jouer   [";
+                    cout << "Jouer    [";
                     break;
                 case 1:
-                    cout << "Lore    [" ;
+                    cout << "Histoire [" ;
                     break;
                 case 2:
-                    cout << "Credits [";
+                    cout << "Credits  [";
                     break;
                 case 3:
-                    cout << "Exit    [";
+                    cout << "Exit     [";
                     break;
                     }
                 if (selection == i ){
@@ -81,6 +81,7 @@ int Menu::menuPricipal(){
             }
             std::cin.clear();
         }
+        system("cls");
         switch(selection){
         case 0:
             std::cin.clear();
@@ -95,7 +96,7 @@ int Menu::menuPricipal(){
             this->menuCredits();
             break;
         case 3:
-            system("exit /s");
+            system("exit");
             break;
     }
     return selection;
@@ -146,6 +147,8 @@ int Menu::menuJouer(){
                 }
             }
         }
+
+        system("cls");
         switch(selection){
         case 0:
             std::cin.clear();
@@ -237,9 +240,11 @@ int Menu::menuPause(){
 std::cin.clear();
 
     int selection = 0;
-    char key_press;
-    int ascii_value;
+    char key_press = 0;
+    int ascii_value = 0;
+    this->ClearConsoleInputBuffer();
         while (ascii_value!=13){
+
             std::cin.clear();
             system("cls");
             for (int i=0; i<2; i++){
@@ -275,7 +280,11 @@ std::cin.clear();
                     selection = 0;
                 }
             }
+
         }
+        system("cls");
+        this->ClearConsoleInputBuffer();
+
         switch(selection){
         case 0:
             std::cin.clear();
@@ -286,4 +295,5 @@ std::cin.clear();
             return selection;
             break;
     }
+
 }
