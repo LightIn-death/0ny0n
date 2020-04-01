@@ -2,10 +2,14 @@
 #include <windows.h>
 #include "Menu.h"
 #include <conio.h>
+#include "Game.h"
+
+
 using namespace std;
 
 int main()
 {
+
 
     Menu* debut = new Menu();
     int debut_game = debut->menuPricipal();
@@ -16,6 +20,16 @@ int main()
     }else if(debut_game == 1) {
 
     }
+
+    Game game= Game();
+    while(1)
+    {
+        game._update_delta();
+        game._process();
+    }
+
+
+
 
     return 0;
 }
