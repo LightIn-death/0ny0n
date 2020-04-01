@@ -12,9 +12,14 @@ int main()
 
 
 Game game= Game();
+
+game._ready();
+
         while(1)
         {
             game._update_delta();
+            game._process();
+
         }
 
 

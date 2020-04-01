@@ -2,9 +2,10 @@
 #define ENTITY_H
 
 #include "Vector2.h"
+#include "GameConsole.h"
 
 
-class Entity
+class Entity : public GameConsole
 {
 
     public:

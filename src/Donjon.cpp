@@ -21,6 +21,10 @@ Donjon::~Donjon()
     //dtor
 }
 
+vector<Room*> Donjon::get_Map(){
+return this->Map;}
+
+
 
 void Donjon::initDonjon()
 {
@@ -42,13 +46,10 @@ void Donjon::initDonjon()
 
 
 
-    while(distanceToFinal>piece_depart.get_roomSize().x)
+    while(distanceToFinal>LastCreate->get_roomSize().x)
     {
 
         cout << endl << "This end : " << distanceToFinal<< endl;
-
-
-
 
 
 
@@ -61,10 +62,11 @@ void Donjon::initDonjon()
                 double X =  LastCreate->get_position().x + LastCreate->get_roomSize().x + 1;
                 double Y = LastCreate->get_position().y;
 
-                Room piece_suivante = Room();
-                piece_suivante.set_position(Vector2(X,Y));
-                this->Map.push_back(&piece_suivante);
-                LastCreate = &piece_suivante;
+                Room* piece_suivante =new Room();
+                piece_suivante->set_position(Vector2(X,Y));
+                LastCreate = piece_suivante;
+                this->Map.push_back(piece_suivante);
+
 
             }
             if(LastCreate->get_position().vectorTo(piece_arrive.get_position()).x < 0)
@@ -72,10 +74,10 @@ void Donjon::initDonjon()
                 double X =  LastCreate->get_position().x - LastCreate->get_roomSize().x - 1;
                 double Y = LastCreate->get_position().y;
 
-                Room piece_suivante = Room();
-                piece_suivante.set_position(Vector2(X,Y));
-                this->Map.push_back(&piece_suivante);
-                LastCreate = &piece_suivante;
+                 Room* piece_suivante =new Room();
+                piece_suivante->set_position(Vector2(X,Y));
+                LastCreate = piece_suivante;
+                this->Map.push_back(piece_suivante);
             }
 
         }
@@ -91,20 +93,20 @@ void Donjon::initDonjon()
                 double Y = LastCreate->get_position().y + LastCreate->get_roomSize().y + 1;
 
 
-                Room piece_suivante = Room();
-                piece_suivante.set_position(Vector2(X,Y));
-                this->Map.push_back(&piece_suivante);
-                LastCreate = &piece_suivante;
+                  Room* piece_suivante =new Room();
+                piece_suivante->set_position(Vector2(X,Y));
+                LastCreate = piece_suivante;
+                this->Map.push_back(piece_suivante);
             }
             if(LastCreate->get_position().vectorTo(piece_arrive.get_position()).y < 0)
             {
                 double X =  LastCreate->get_position().x ;
                 double Y = LastCreate->get_position().y - LastCreate->get_roomSize().y - 1;
 
-                Room piece_suivante = Room();
-                piece_suivante.set_position(Vector2(X,Y));
-                this->Map.push_back(&piece_suivante);
-                LastCreate = &piece_suivante;
+  Room* piece_suivante =new Room();
+                piece_suivante->set_position(Vector2(X,Y));
+                LastCreate = piece_suivante;
+                this->Map.push_back(piece_suivante);
             }
         }
 
@@ -114,7 +116,7 @@ void Donjon::initDonjon()
 
 
 
-    cout << "WIN ?! " ;
+
 
 
 

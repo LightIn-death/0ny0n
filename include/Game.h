@@ -2,6 +2,7 @@
 #define GAME_H
 #include <chrono>
 #include "Donjon.h"
+#include "GameConsole.h"
 
 
 
@@ -17,7 +18,7 @@ class Game
 
 
         void _ready();
-        void _process(float delta);
+        void _process();
         void _update_delta();
         float delta;
 
@@ -25,7 +26,9 @@ class Game
     protected:
 
 
+
     private:
+        GameConsole console;
        steady_clock::time_point   oldtime;
        steady_clock::time_point   newtime;
 

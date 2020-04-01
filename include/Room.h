@@ -3,6 +3,11 @@
 
 #include "Entity.h"
 #include "Vector2.h"
+#include <iostream>
+#include <ctime>
+
+
+using namespace std;
 
 
 class Room : public Entity
@@ -12,6 +17,7 @@ class Room : public Entity
         virtual ~Room();
 
         Vector2 get_roomSize();
+        void show();
 
 
 
