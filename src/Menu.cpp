@@ -1,6 +1,9 @@
 #include "Menu.h"
 #include <iostream>
 #include <windows.h>
+#include <unistd.h>
+#include <conio.h>
+
 using namespace std;
 Menu::Menu()
 {
@@ -12,12 +15,21 @@ Menu::~Menu()
     //dtor
 }
 
+void Menu::Color(int couleurDuTexte,int couleurDeFond){
+        HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
+}
+
 void Menu::menuPricipal(){
-    this->ClearConsoleInputBuffer();
+
+    std::cin.clear();
     int selection = 0;
-    while (!GetAsyncKeyState(VK_RETURN)){
+    char key_press;
+    int ascii_value;
+    while (ascii_value!=13){
+        std::cin.clear();
             system("cls");
-            for (int i=0; i<3; i++){
+            for (int i=0; i<4; i++){
                     switch(i){
                 case 0:
                     cout << "Jouer   [";
@@ -28,6 +40,9 @@ void Menu::menuPricipal(){
                 case 2:
                     cout << "Credits [";
                     break;
+                case 3:
+                    cout << "Exit    [";
+                    break;
                     }
                 if (selection == i ){
                     cout << "X]" << endl;;
@@ -35,35 +50,41 @@ void Menu::menuPricipal(){
                     cout << " ]" << endl;;
                 }
             }
+            key_press=getch();
+            ascii_value=key_press;
 
-            if(GetAsyncKeyState(VK_UP)){
-                this->ClearConsoleInputBuffer();
+            if(ascii_value==72){
+                std::cin.clear();
                 selection -= 1;
 
                 if (selection < 0){
-                    selection = 2;
+                    selection = 3;
                 }
-            }else if(GetAsyncKeyState(VK_DOWN)){
-                this->ClearConsoleInputBuffer();
+            }else if(ascii_value==80){
+                std::cin.clear();
                 selection += 1;
 
-                if (selection > 2){
+                if (selection > 3){
                     selection = 0;
                 }
             }
+            std::cin.clear();
         }
         switch(selection){
         case 0:
-            this->ClearConsoleInputBuffer();
+            std::cin.clear();
             this->menuJouer();
             break;
         case 1:
-            this->ClearConsoleInputBuffer();
+            std::cin.clear();
             this->menuHistoire();
             break;
         case 2:
-            this->ClearConsoleInputBuffer();
+            std::cin.clear();
             this->menuCredits();
+            break;
+        case 3:
+            system("exit");
             break;
     }
 }
@@ -75,17 +96,20 @@ void Menu::ClearConsoleInputBuffer(){
     keybd_event('S', 0,KEYEVENTF_KEYUP, 0);
     keybd_event(VK_BACK, 0, 0, 0);
     keybd_event(VK_BACK, 0,KEYEVENTF_KEYUP, 0); */
-    PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[100];
+    PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[1];
     DWORD ClearingVar2;
-    ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE),ClearingVar1,100,&ClearingVar2);
+    ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE),ClearingVar1,1,&ClearingVar2);
     delete[] ClearingVar1;
 }
 
 void Menu::menuJouer(){
 
-    this->ClearConsoleInputBuffer();
+    std::cin.clear();
     int selection = 0;
-        while (!GetAsyncKeyState(VK_RETURN)){
+    char key_press;
+    int ascii_value;
+        while (ascii_value!=13){
+            std::cin.clear();
             system("cls");
             for (int i=0; i<3; i++){
                     switch(i){
@@ -105,16 +129,18 @@ void Menu::menuJouer(){
                     cout << " ]" << endl;;
                 }
             }
+            key_press=getch();
+            ascii_value=key_press;
 
-            if(GetAsyncKeyState(VK_UP)){
-                this->ClearConsoleInputBuffer();
+            if(ascii_value==72){
+                std::cin.clear();
                 selection -= 1;
 
                 if (selection < 0){
                     selection = 2;
                 }
-            }else if(GetAsyncKeyState(VK_DOWN)){
-                this->ClearConsoleInputBuffer();
+            }else if(ascii_value==80){
+                std::cin.clear();
                 selection += 1;
 
                 if (selection > 2){
@@ -124,36 +150,64 @@ void Menu::menuJouer(){
         }
         switch(selection){
         case 0:
-            this->ClearConsoleInputBuffer();
+            std::cin.clear();
             cout << "Nouvelle Partie !" << endl;
             break;
         case 1:
-            this->ClearConsoleInputBuffer();
+            std::cin.clear();
             cout << "Partie Charge !" << endl;
             break;
         case 2:
-            this->ClearConsoleInputBuffer();
+            std::cin.clear();
             this->menuPricipal();
             break;
     }
 }
 
 void Menu::menuHistoire(){
-    this->ClearConsoleInputBuffer();
+    std::cin.clear();
+
+    char key_press;
+    int ascii_value;
+    while (ascii_value!=13){
 
 
-    while (!GetAsyncKeyState(VK_RETURN)){
         system("cls");
-        cout << "Vous etes le jeune princpe du royaume d'Onyon malheureusemment" << endl;
-        cout << "votre promise a ete kidnape et emene 10 pieds sous terre." << endl;
-        cout << "Votre objectifs ? Conquerir tous les etages afin de la sauver, mais garde " << endl;
-        cout << "aux differents obstacles qui pourront vous barrer le passage." << endl;
+        cout << "Vous etes le jeune prince du royaume d'Onyon malheureusemment" << endl;
+        cout << "votre promise a ete kidnape et enmene 10 pieds sous terre." << endl;
+        cout << "Votre objectif ? Conquerir tous les etages afin de la sauver, mais garde " << endl;
+        cout << "aux differents obstacles qui pourront vous barrez le passage." << endl;
+        key_press=getch();
+        ascii_value=key_press;
     }
+
 
     this->menuPricipal();
 
 }
 
 void Menu::menuCredits(){
+const char rocket[] =
+"                                           \n\
+                             Create by\n\
+                        \n\
+                        Designer : Breval\n\
+                        \n\
+                        Developer : Breval\n\
+                        \n\
+                        Music and Sound : Breval\n\
+                        \n\
+                        Characters : Breval";
 
+    for (int i = 0; i < 70; i ++) printf("\n"); // jump to bottom of console
+    this->Color(6,0);
+    printf("%s", rocket);
+    this->Color(7,0);
+    int j = 300000;
+    for (int i = 0; i < 30; i ++) {
+        usleep(j); // move faster and faster,
+        j = (int)(j * 0.9995); // so sleep less each time
+        printf("\n"); // move rocket a line upward
+    }
+    this->menuPricipal();
 }

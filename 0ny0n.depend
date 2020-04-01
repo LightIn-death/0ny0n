@@ -1,13 +1,16 @@
 # depslib dependency file v1.0
-1585740145 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\main.cpp
+1585746867 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\main.cpp
 	<iostream>
 	<windows.h>
 	"Menu.h"
+	<conio.h>
 
-1585740130 d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\include\menu.h
+1585743721 d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\include\menu.h
 
-1585740554 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\src\menu.cpp
+1585747791 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\src\menu.cpp
 	"Menu.h"
 	<iostream>
 	<windows.h>
+	<unistd.h>
+	<conio.h>
 

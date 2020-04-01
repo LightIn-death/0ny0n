@@ -14,6 +14,7 @@ class Menu
         void menuCredits();
 
         void ClearConsoleInputBuffer();
+        void Color(int color, int color2);
 
     protected:
 
