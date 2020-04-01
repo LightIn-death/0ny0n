@@ -6,16 +6,12 @@ using namespace std;
 
 int main()
 {
-    int selection = 0;
 
     Menu* debut = new Menu();
-
-    debut->menuPricipal(selection);
-
-
-
+    debut->menuPricipal();
     debut->ClearConsoleInputBuffer();
-    cout << "Choix " << selection << " selectionne" << endl;
+
+
 
     return 0;
 }

@@ -8,8 +8,8 @@ class Menu
         Menu();
         virtual ~Menu();
 
-        int menuPricipal(int selection);
-        int menuJouer();
+        void menuPricipal();
+        void menuJouer();
         void menuHistoire();
         void menuCredits();
 

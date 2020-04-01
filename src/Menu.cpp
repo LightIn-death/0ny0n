@@ -12,8 +12,9 @@ Menu::~Menu()
     //dtor
 }
 
-int Menu::menuPricipal(int selection){
-
+void Menu::menuPricipal(){
+    this->ClearConsoleInputBuffer();
+    int selection = 0;
     while (!GetAsyncKeyState(VK_RETURN)){
             system("cls");
             for (int i=0; i<3; i++){
@@ -36,14 +37,14 @@ int Menu::menuPricipal(int selection){
             }
 
             if(GetAsyncKeyState(VK_UP)){
-                ClearConsoleInputBuffer();
+                this->ClearConsoleInputBuffer();
                 selection -= 1;
 
                 if (selection < 0){
                     selection = 2;
                 }
             }else if(GetAsyncKeyState(VK_DOWN)){
-                ClearConsoleInputBuffer();
+                this->ClearConsoleInputBuffer();
                 selection += 1;
 
                 if (selection > 2){
@@ -53,12 +54,15 @@ int Menu::menuPricipal(int selection){
         }
         switch(selection){
         case 0:
+            this->ClearConsoleInputBuffer();
             this->menuJouer();
             break;
         case 1:
+            this->ClearConsoleInputBuffer();
             this->menuHistoire();
             break;
         case 2:
+            this->ClearConsoleInputBuffer();
             this->menuCredits();
             break;
     }
@@ -71,17 +75,19 @@ void Menu::ClearConsoleInputBuffer(){
     keybd_event('S', 0,KEYEVENTF_KEYUP, 0);
     keybd_event(VK_BACK, 0, 0, 0);
     keybd_event(VK_BACK, 0,KEYEVENTF_KEYUP, 0); */
-    PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[256];
+    PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[100];
     DWORD ClearingVar2;
-    ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE),ClearingVar1,256,&ClearingVar2);
+    ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE),ClearingVar1,100,&ClearingVar2);
     delete[] ClearingVar1;
 }
 
-void Menu::menuJouer(int selection){
+void Menu::menuJouer(){
 
-    while (!GetAsyncKeyState(VK_RETURN)){
+    this->ClearConsoleInputBuffer();
+    int selection = 0;
+        while (!GetAsyncKeyState(VK_RETURN)){
             system("cls");
-            for (int i=0; i<2; i++){
+            for (int i=0; i<3; i++){
                     switch(i){
                 case 0:
                     cout << "Nouvelle Partie [";
@@ -101,14 +107,14 @@ void Menu::menuJouer(int selection){
             }
 
             if(GetAsyncKeyState(VK_UP)){
-                ClearConsoleInputBuffer();
+                this->ClearConsoleInputBuffer();
                 selection -= 1;
 
                 if (selection < 0){
                     selection = 2;
                 }
             }else if(GetAsyncKeyState(VK_DOWN)){
-                ClearConsoleInputBuffer();
+                this->ClearConsoleInputBuffer();
                 selection += 1;
 
                 if (selection > 2){
@@ -118,13 +124,36 @@ void Menu::menuJouer(int selection){
         }
         switch(selection){
         case 0:
-            cout << "Nouvelle Partie !" endl;
+            this->ClearConsoleInputBuffer();
+            cout << "Nouvelle Partie !" << endl;
             break;
         case 1:
-            cout << "Partie Charge !" endl;
+            this->ClearConsoleInputBuffer();
+            cout << "Partie Charge !" << endl;
             break;
         case 2:
+            this->ClearConsoleInputBuffer();
             this->menuPricipal();
             break;
     }
+}
+
+void Menu::menuHistoire(){
+    this->ClearConsoleInputBuffer();
+
+
+    while (!GetAsyncKeyState(VK_RETURN)){
+        system("cls");
+        cout << "Vous etes le jeune princpe du royaume d'Onyon malheureusemment" << endl;
+        cout << "votre promise a ete kidnape et emene 10 pieds sous terre." << endl;
+        cout << "Votre objectifs ? Conquerir tous les etages afin de la sauver, mais garde " << endl;
+        cout << "aux differents obstacles qui pourront vous barrer le passage." << endl;
+    }
+
+    this->menuPricipal();
+
+}
+
+void Menu::menuCredits(){
+
 }
