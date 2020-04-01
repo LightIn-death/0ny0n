@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1585753197 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\src\donjon.cpp
+	"Donjon.h"
+	<cstdlib>
+	<iostream>
+	<ctime>
+
+1585753197 d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\include\donjon.h
+	<vector>
+	"Entity.h"
+	"Room.h"
+
+1585753197 d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\include\entity.h
+	"Vector2.h"
+
+1585753197 d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\include\vector2.h
+
+1585753197 d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\include\room.h
+	"Entity.h"
+	"Vector2.h"
+
+1585753197 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\src\entity.cpp
+	"Entity.h"
+
+1585753197 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\src\game.cpp
+	"Game.h"
+	"Donjon.h"
+	<chrono>
+
+1585753197 d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\include\game.h
+	<chrono>
+	"Donjon.h"
+
+1585753072 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\src\menu.cpp
+	"Menu.h"
+	<iostream>
+	<windows.h>
+	<unistd.h>
+	<conio.h>
+
+1585753072 d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\include\menu.h
+
+1585753197 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\src\room.cpp
+	"Room.h"
+
+1585753197 source:d:\vie étudiante\École\b1\programmation c c++ c#\projet_c++\0ny0n\src\vector2.cpp
+	"Vector2.h"
+	<math.h>
+	<stdlib.h>
+
