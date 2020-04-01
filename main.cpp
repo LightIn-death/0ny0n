@@ -14,7 +14,7 @@ int main()
 
         int selection = 0;
 
-    while (1) {
+    while (!GetAsyncKeyState(VK_)) {
         for (int i=0; i<5; i++){
             cout << "choix " << i << " [";
             if (selection == i ){
@@ -25,13 +25,23 @@ int main()
         }
 
         if(GetAsyncKeyState(VK_UP)){
+            selection -= 1;
 
+            if (selection < 0){
+                selection = 4;
+            }
         }else if(GetAsyncKeyState(VK_DOWN)){
+            selection += 1;
 
+            if (selection > 4){
+                selection = 0;
+            }
         }
+
     system("cls");
 
     }
-    cout << "Hello world" << endl;
+    cout << "Choix " << selection << " selectionne" << endl;
+
     return 0;
 }
