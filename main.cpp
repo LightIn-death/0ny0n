@@ -1,46 +1,20 @@
 #include <iostream>
 #include <windows.h>
+#include "Menu.h"
 
 using namespace std;
 
 int main()
 {
+    int selection = 0;
 
-        int touche[5];
+    Menu* debut = new Menu();
 
-        for (int i=0; i<5; i++){
-            touche[i]=i;
-        }
+    debut->menuPricipal(selection);
 
-        int selection = 0;
 
-    while (!GetAsyncKeyState(VK_)) {
-        for (int i=0; i<5; i++){
-            cout << "choix " << i << " [";
-            if (selection == i ){
-                cout << "X]" << endl;;
-            }else{
-                cout << " ]" << endl;;
-            }
-        }
 
-        if(GetAsyncKeyState(VK_UP)){
-            selection -= 1;
-
-            if (selection < 0){
-                selection = 4;
-            }
-        }else if(GetAsyncKeyState(VK_DOWN)){
-            selection += 1;
-
-            if (selection > 4){
-                selection = 0;
-            }
-        }
-
-    system("cls");
-
-    }
+    debut->ClearConsoleInputBuffer();
     cout << "Choix " << selection << " selectionne" << endl;
 
     return 0;
