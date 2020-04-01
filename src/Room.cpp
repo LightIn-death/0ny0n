@@ -11,3 +11,7 @@ Room::~Room()
 }
 
 
+Vector2 Room::get_roomSize()
+{
+    return this->roomSize;
+}

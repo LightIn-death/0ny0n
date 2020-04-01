@@ -11,6 +11,9 @@ class Room : public Entity
         Room();
         virtual ~Room();
 
+        Vector2 get_roomSize();
+
+
 
     protected:
 

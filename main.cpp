@@ -11,7 +11,15 @@ int main()
 {
 
 
-    Menu* debut = new Menu();
+Game game= Game();
+        while(1)
+        {
+            game._update_delta();
+        }
+
+
+
+    /*Menu* debut = new Menu();
     int debut_game = debut->menuPricipal();
 
 //Nouvelle partie == 0    |   Charger partie == 1
@@ -24,7 +32,7 @@ int main()
     }else if(debut_game == 1) {
 
     }
-
+*/
 
 
 
