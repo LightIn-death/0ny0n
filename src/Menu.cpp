@@ -21,7 +21,6 @@ void Menu::Color(int couleurDuTexte,int couleurDeFond){
 }
 
 void Menu::menuPricipal(){
-
     std::cin.clear();
     int selection = 0;
     char key_press;
@@ -89,7 +88,6 @@ void Menu::menuPricipal(){
     }
 }
 
-
 void Menu::ClearConsoleInputBuffer(){
     // If you happen to have any trouble clearing already cleared buffer, uncomment the section below.
     /* keybd_event('S', 0, 0, 0);
@@ -103,7 +101,6 @@ void Menu::ClearConsoleInputBuffer(){
 }
 
 void Menu::menuJouer(){
-
     std::cin.clear();
     int selection = 0;
     char key_press;
@@ -166,11 +163,9 @@ void Menu::menuJouer(){
 
 void Menu::menuHistoire(){
     std::cin.clear();
-
     char key_press;
     int ascii_value;
     while (ascii_value!=13){
-
 
         system("cls");
         cout << "Vous etes le jeune prince du royaume d'Onyon malheureusemment" << endl;
@@ -180,31 +175,54 @@ void Menu::menuHistoire(){
         key_press=getch();
         ascii_value=key_press;
     }
-
-
     this->menuPricipal();
-
 }
-
 void Menu::menuCredits(){
 const char rocket[] =
 "                                           \n\
-                             Create by\n\
+                                             \n\
+         Il y a bien longtemps dans une contree lointaine tres lointaine... \n\
+\n\
+\n\
+                            PROLOGUE\n\
+\n\
+                              0ny0n\n\
                         \n\
-                        Designer : Breval\n\
                         \n\
-                        Developer : Breval\n\
+                        Designe par : Breval\n\
                         \n\
-                        Music and Sound : Breval\n\
+                        Developpe par : Breval\n\
                         \n\
-                        Characters : Breval";
+                        Invente par : Breval\n\
+                        \n\
+                        Decouvert par : Breval\n\
+                        \n\
+                    A Emerge du cerveau de : Breval\n\
+                        \n\
+                    Avec l'asstistance de : Breval\n\
+                        \n\
+                    Sans oublie le genie de : Breval\n\
+                                Fin\n\
+                                \n\
+                                \n\
+                                \n\
+                                \n\
+                                \n\
+                                \n\
+                                \n\
+                                \n\
+                                \n\
+                                \n\
+                    (ah oui y a Erwan qui a fait le menu)\n\
+";
+
 
     for (int i = 0; i < 70; i ++) printf("\n"); // jump to bottom of console
     this->Color(6,0);
     printf("%s", rocket);
     this->Color(7,0);
     int j = 300000;
-    for (int i = 0; i < 30; i ++) {
+    for (int i = 0; i < 40; i ++) {
         usleep(j); // move faster and faster,
         j = (int)(j * 0.9995); // so sleep less each time
         printf("\n"); // move rocket a line upward
