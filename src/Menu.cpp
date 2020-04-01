@@ -15,6 +15,18 @@ Menu::~Menu()
     //dtor
 }
 
+void Menu::ClearConsoleInputBuffer(){
+    // If you happen to have any trouble clearing already cleared buffer, uncomment the section below.
+    /* keybd_event('S', 0, 0, 0);
+    keybd_event('S', 0,KEYEVENTF_KEYUP, 0);
+    keybd_event(VK_BACK, 0, 0, 0);
+    keybd_event(VK_BACK, 0,KEYEVENTF_KEYUP, 0); */
+    PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[256];
+    DWORD ClearingVar2;
+    ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE),ClearingVar1,256,&ClearingVar2);
+    delete[] ClearingVar1;
+}
+
 void Menu::Color(int couleurDuTexte,int couleurDeFond){
         HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
@@ -83,7 +95,7 @@ int Menu::menuPricipal(){
             this->menuCredits();
             break;
         case 3:
-            system("exit");
+            system("exit /s");
             break;
     }
     return selection;
@@ -221,3 +233,57 @@ const char rocket[] =
     this->menuPricipal();
 }
 
+int Menu::menuPause(){
+std::cin.clear();
+
+    int selection = 0;
+    char key_press;
+    int ascii_value;
+        while (ascii_value!=13){
+            std::cin.clear();
+            system("cls");
+            for (int i=0; i<2; i++){
+                    switch(i){
+                case 0:
+                    cout << "Reprendre                [";
+                    break;
+                case 1:
+                    cout << "Retour au menu principal [" ;
+                    break;
+                    }
+                if (selection == i ){
+                    cout << "X]" << endl;;
+                }else{
+                    cout << " ]" << endl;;
+                }
+            }
+            key_press=getch();
+            ascii_value=key_press;
+
+            if(ascii_value==72){
+                std::cin.clear();
+                selection -= 1;
+
+                if (selection < 0){
+                    selection = 1;
+                }
+            }else if(ascii_value==80){
+                std::cin.clear();
+                selection += 1;
+
+                if (selection > 1){
+                    selection = 0;
+                }
+            }
+        }
+        switch(selection){
+        case 0:
+            std::cin.clear();
+            return selection;
+            break;
+        case 1:
+            std::cin.clear();
+            return selection;
+            break;
+    }
+}
