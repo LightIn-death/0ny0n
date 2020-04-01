@@ -8,10 +8,13 @@ using namespace std::chrono;
 Game::Game()
 {
     this->newtime=steady_clock::now();
-
-
-
 }
+
+{
+    this->newtime=steady_clock::now();
+}
+
+
 
 Game::~Game()
 {

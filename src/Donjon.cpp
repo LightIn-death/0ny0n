@@ -38,7 +38,6 @@ void Donjon::initDonjon(){
     double distanceToFinal= piece_depart.get_position().distanceTo(piece_arrive.get_position()).lenght();
 
 
-
     cout << endl << "This end : " << distanceToFinal<< endl;
 
 
