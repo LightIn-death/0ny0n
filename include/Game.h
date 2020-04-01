@@ -5,9 +5,6 @@
 using namespace std::chrono;
 
 
-
-
-
 class Game
 {
     public:
@@ -16,9 +13,9 @@ class Game
 
 
         void _ready();
-        void _process();
+        void _process(delta);
         void _update_delta();
-          float delta;
+        float delta;
 
 
     protected:

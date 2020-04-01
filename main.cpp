@@ -18,12 +18,6 @@ int main()
        cout << game.delta << endl;
 
 
-
-
-
-
-
-
    }
 
 
