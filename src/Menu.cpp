@@ -20,7 +20,7 @@ void Menu::Color(int couleurDuTexte,int couleurDeFond){
         SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
 
-void Menu::menuPricipal(){
+int Menu::menuPricipal(){
     std::cin.clear();
     int selection = 0;
     char key_press;
@@ -72,7 +72,7 @@ void Menu::menuPricipal(){
         switch(selection){
         case 0:
             std::cin.clear();
-            this->menuJouer();
+            selection = this->menuJouer();
             break;
         case 1:
             std::cin.clear();
@@ -86,21 +86,10 @@ void Menu::menuPricipal(){
             system("exit");
             break;
     }
+    return selection;
 }
 
-void Menu::ClearConsoleInputBuffer(){
-    // If you happen to have any trouble clearing already cleared buffer, uncomment the section below.
-    /* keybd_event('S', 0, 0, 0);
-    keybd_event('S', 0,KEYEVENTF_KEYUP, 0);
-    keybd_event(VK_BACK, 0, 0, 0);
-    keybd_event(VK_BACK, 0,KEYEVENTF_KEYUP, 0); */
-    PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[1];
-    DWORD ClearingVar2;
-    ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE),ClearingVar1,1,&ClearingVar2);
-    delete[] ClearingVar1;
-}
-
-void Menu::menuJouer(){
+int Menu::menuJouer(){
     std::cin.clear();
     int selection = 0;
     char key_press;
@@ -148,11 +137,12 @@ void Menu::menuJouer(){
         switch(selection){
         case 0:
             std::cin.clear();
-            cout << "Nouvelle Partie !" << endl;
+
+            return selection;
             break;
         case 1:
             std::cin.clear();
-            cout << "Partie Charge !" << endl;
+            return selection;
             break;
         case 2:
             std::cin.clear();
@@ -177,6 +167,7 @@ void Menu::menuHistoire(){
     }
     this->menuPricipal();
 }
+
 void Menu::menuCredits(){
 const char rocket[] =
 "                                           \n\
@@ -229,3 +220,4 @@ const char rocket[] =
     }
     this->menuPricipal();
 }
+

@@ -8,12 +8,10 @@ class Menu
         Menu();
         virtual ~Menu();
 
-        void menuPricipal();
-        void menuJouer();
+        int menuPricipal();
+        int menuJouer();
         void menuHistoire();
         void menuCredits();
-
-        void ClearConsoleInputBuffer();
         void Color(int color, int color2);
 
     protected:

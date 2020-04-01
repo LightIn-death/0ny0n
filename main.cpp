@@ -8,8 +8,14 @@ int main()
 {
 
     Menu* debut = new Menu();
-    debut->menuPricipal();
-    debut->ClearConsoleInputBuffer();
+    int debut_game = debut->menuPricipal();
+
+//Nouvelle partie == 0    |   Charger partie == 1
+    if(debut_game == 0){
+
+    }else if(debut_game == 1) {
+
+    }
 
     return 0;
 }
