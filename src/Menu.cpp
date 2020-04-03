@@ -173,7 +173,7 @@ void Menu::menuHistoire(){
     while (ascii_value!=13){
 
         system("cls");
-        cout << "Vous etes le jeune prince du royaume d'Onyon malheureusemment" << endl;
+        cout << "Vous etes le jeune prince du royaume d'0ny0n malheureusemment" << endl;
         cout << "votre promise a ete kidnape et enmene 10 pieds sous terre." << endl;
         cout << "Votre objectif ? Conquerir tous les etages afin de la sauver, mais garde " << endl;
         cout << "aux differents obstacles qui pourront vous barrez le passage." << endl;

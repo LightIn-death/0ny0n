@@ -37,7 +37,7 @@ void Game::_update_delta()
     this->newtime=steady_clock::now();
     this->delta=float( duration_cast<microseconds>(newtime - oldtime).count()) / 10000;
 */
-cout << this->debut_game++ << endl;
+cout << debut_game++ << endl;
 
 }
 
