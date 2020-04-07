@@ -25,26 +25,19 @@ vector<Room*> Donjon::get_Map(){
 return this->Map;}
 
 
-
 void Donjon::initDonjon()
 {
 
     Room piece_depart = Room();
     Room piece_arrive = Room();
 
-    piece_depart.set_position(Vector2(20,20));
-    piece_arrive.set_position(Vector2(90,50));
+    piece_depart.set_position(Vector2(10,15));
+    piece_arrive.set_position(Vector2(30,25));
     this->Map.push_back(&piece_depart);
     this->Map.push_back(&piece_arrive);
     Room* LastCreate = &piece_depart;
 
-
-
-
     double distanceToFinal= piece_depart.get_position().distanceTo(piece_arrive.get_position()).lenght();
-
-
-
 
     while(distanceToFinal>LastCreate->get_roomSize().x)
     {

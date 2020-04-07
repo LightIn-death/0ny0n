@@ -13,24 +13,32 @@ Game::Game()
     this->newtime=steady_clock::now();
 }
 
+Game::~Game() {}
 
 
-Game::~Game()
+void Game::_ready()
 {
-    //dtor
-}
-
-
-void Game::_ready() {
+    system("cls");
     this->console = GameConsole();
-}
-void Game::_process() {
-int i;
-for(i=0;i<this->Map.get_Map().size();i++){
+
+
+    int i;
+    for(i=0; i<this->Map.get_Map().size(); i++)
+    {
         this->Map.get_Map()[i]->show();
+    }
 }
 
-this->console.show();
+
+
+
+void Game::_process()
+{
+
+
+
+
+//this->console.show();
 
 
 }

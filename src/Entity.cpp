@@ -14,6 +14,7 @@ Entity::~Entity()
 Vector2 Entity::get_position()
 {
     return this->position;
+
 }
 void Entity::set_position(Vector2 pos)
 {

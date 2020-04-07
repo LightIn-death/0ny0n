@@ -24,7 +24,7 @@ class Room : public Entity
     protected:
 
     private:
-        Vector2 roomSize = Vector2(10,10);
+        Vector2 roomSize = Vector2(3,3);
 };
 
 #endif // ROOM_H

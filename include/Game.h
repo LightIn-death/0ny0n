@@ -4,8 +4,6 @@
 #include "Donjon.h"
 #include "GameConsole.h"
 
-
-
 using namespace std::chrono;
 
 
@@ -15,7 +13,6 @@ class Game
     public:
         Game();
         virtual ~Game();
-
 
         void _ready();
         void _process();
@@ -29,8 +26,8 @@ class Game
 
     private:
         GameConsole console;
-       steady_clock::time_point   oldtime;
-       steady_clock::time_point   newtime;
+        steady_clock::time_point oldtime;
+        steady_clock::time_point newtime;
 
 Donjon Map = Donjon();
 };

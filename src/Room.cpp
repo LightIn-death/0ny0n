@@ -1,7 +1,9 @@
 #include "Room.h"
-
 #include <iostream>
 #include <ctime>
+#include "Entity.h"
+
+
 
 
 using namespace std;
@@ -12,6 +14,7 @@ Room::Room()
 
 Room::~Room()
 {
+
     //dtor
 }
 
@@ -24,19 +27,78 @@ Vector2 Room::get_roomSize()
 
 void Room::show()
 {
-    //
-  //  int i;
-    //for(i=0;i<int(this->get_roomSize().x);i++){
-      //  wsprintf(&screen[(int(this->position.y) *nScreenWidth) +int(this->position.x) + i ], L"#");
-    //}
+
+
+    //this->set_cursor(Vector2(10,10));
+
+   int i;
+   for(i=0;i<int(this->get_roomSize().x);i++){
+
+       this->set_cursor(Vector2(int(this->position.y),int(this->position.x)+i));
+        cout << "#";
+   }
+
+
+      for(i=0;i<int(this->get_roomSize().x);i++){
+
+       this->set_cursor(Vector2(int(this->position.y)+int(this->get_roomSize().y),int(this->position.x)+i));
+        cout << "#";
+   }
 
 
 
-    //wsprintf(&screen[nScreenWidth + 5], L"www.OneLoneCoder.com - S N A K E ! !                SCORE: %d", 10);
-/*
 
-    cout    << "x de " << this->position.x <<" a "<< this->roomSize.x +this->position.x
-            << " | et y de " <<  this->position.y
-            <<" a " << this->roomSize.y + this->position.y
-            <<endl;*/
+
+   for(i=0;i<int(this->get_roomSize().y);i++){
+
+       this->set_cursor(Vector2(int(this->position.y)+i,int(this->position.x)));
+        cout << "#";
+   }
+
+
+      for(i=0;i<int(this->get_roomSize().y);i++){
+
+       this->set_cursor(Vector2(int(this->position.y)+i,int(this->position.x)+int(this->get_roomSize().x)));
+        cout << "#";
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
