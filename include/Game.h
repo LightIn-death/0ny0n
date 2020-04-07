@@ -20,7 +20,7 @@ class Game
         void _process(float delta);
         void _update_delta();
         float delta;
-
+        int debut_game = 0;
 
     protected:
 

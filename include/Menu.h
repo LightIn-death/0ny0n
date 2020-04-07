@@ -12,6 +12,8 @@ class Menu
         int menuJouer();
         void menuHistoire();
         void menuCredits();
+        int menuPause();
+        void ClearConsoleInputBuffer();
         void Color(int color, int color2);
 
     protected:

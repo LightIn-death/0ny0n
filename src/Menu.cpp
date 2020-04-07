@@ -15,6 +15,18 @@ Menu::~Menu()
     //dtor
 }
 
+void Menu::ClearConsoleInputBuffer(){
+    // If you happen to have any trouble clearing already cleared buffer, uncomment the section below.
+    /* keybd_event('S', 0, 0, 0);
+    keybd_event('S', 0,KEYEVENTF_KEYUP, 0);
+    keybd_event(VK_BACK, 0, 0, 0);
+    keybd_event(VK_BACK, 0,KEYEVENTF_KEYUP, 0); */
+    PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[256];
+    DWORD ClearingVar2;
+    ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE),ClearingVar1,256,&ClearingVar2);
+    delete[] ClearingVar1;
+}
+
 void Menu::Color(int couleurDuTexte,int couleurDeFond){
         HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
@@ -31,16 +43,16 @@ int Menu::menuPricipal(){
             for (int i=0; i<4; i++){
                     switch(i){
                 case 0:
-                    cout << "Jouer   [";
+                    cout << "Jouer    [";
                     break;
                 case 1:
-                    cout << "Lore    [" ;
+                    cout << "Histoire [" ;
                     break;
                 case 2:
-                    cout << "Credits [";
+                    cout << "Credits  [";
                     break;
                 case 3:
-                    cout << "Exit    [";
+                    cout << "Exit     [";
                     break;
                     }
                 if (selection == i ){
@@ -69,6 +81,7 @@ int Menu::menuPricipal(){
             }
             std::cin.clear();
         }
+        system("cls");
         switch(selection){
         case 0:
             std::cin.clear();
@@ -134,6 +147,8 @@ int Menu::menuJouer(){
                 }
             }
         }
+
+        system("cls");
         switch(selection){
         case 0:
             std::cin.clear();
@@ -158,7 +173,7 @@ void Menu::menuHistoire(){
     while (ascii_value!=13){
 
         system("cls");
-        cout << "Vous etes le jeune prince du royaume d'Onyon malheureusemment" << endl;
+        cout << "Vous etes le jeune prince du royaume d'0ny0n malheureusemment" << endl;
         cout << "votre promise a ete kidnape et enmene 10 pieds sous terre." << endl;
         cout << "Votre objectif ? Conquerir tous les etages afin de la sauver, mais garde " << endl;
         cout << "aux differents obstacles qui pourront vous barrez le passage." << endl;
@@ -221,3 +236,64 @@ const char rocket[] =
     this->menuPricipal();
 }
 
+int Menu::menuPause(){
+std::cin.clear();
+
+    int selection = 0;
+    char key_press = 0;
+    int ascii_value = 0;
+    this->ClearConsoleInputBuffer();
+        while (ascii_value!=13){
+
+            std::cin.clear();
+            system("cls");
+            for (int i=0; i<2; i++){
+                    switch(i){
+                case 0:
+                    cout << "Reprendre                [";
+                    break;
+                case 1:
+                    cout << "Retour au menu principal [" ;
+                    break;
+                    }
+                if (selection == i ){
+                    cout << "X]" << endl;;
+                }else{
+                    cout << " ]" << endl;;
+                }
+            }
+            key_press=getch();
+            ascii_value=key_press;
+
+            if(ascii_value==72){
+                std::cin.clear();
+                selection -= 1;
+
+                if (selection < 0){
+                    selection = 1;
+                }
+            }else if(ascii_value==80){
+                std::cin.clear();
+                selection += 1;
+
+                if (selection > 1){
+                    selection = 0;
+                }
+            }
+
+        }
+        system("cls");
+        this->ClearConsoleInputBuffer();
+
+        switch(selection){
+        case 0:
+            std::cin.clear();
+            return selection;
+            break;
+        case 1:
+            std::cin.clear();
+            return selection;
+            break;
+    }
+
+}

@@ -7,29 +7,28 @@
 
 using namespace std;
 
-int main()
-{
 
 
-    Menu* debut = new Menu();
-    int debut_game = debut->menuPricipal();
-
-//Nouvelle partie == 0    |   Charger partie == 1
-    if(debut_game == 0){
-        Game game= Game();
-        while(1)
-        {
-            game._update_delta();
+int main(){
+    Menu* menu = new Menu();
+    int selection;
+    int debut_game = 0;
+    while(selection != 3){
+        system("cls");
+        selection = menu->menuPricipal();
+    //Nouvelle partie == 1    |   Charger partie == 0
+        Game game = Game();
+        if (selection == 0){
+            while (selection == 0){
+                game._update_delta();
+                if(GetAsyncKeyState(VK_ESCAPE)){
+                    selection = menu->menuPause();
+                }
+            }
+        }else if (selection == 1){
+            cout << "chaussure" << endl;
         }
-    }else if(debut_game == 1) {
-
     }
-
-
-
-
-
-
     return 0;
 }
 
