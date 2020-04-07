@@ -134,7 +134,11 @@ int Room::menu()
     this->Color(3,0);
     cout << "" << endl;
 
-    cout << "[Attaque] : " << this->joueur->getAttaque() <<" " <<  endl;
+    cout << "[Attaque] : ";
+    this->Color(4,0);
+    cout << this->joueur->getAttaque();
+    this->Color(3,0);
+    cout <<" " <<  endl;
     cout << "[Defense] : " << this->joueur->getDefense() <<" \n\n";
 
 
@@ -150,7 +154,7 @@ int Room::menu()
     for(m=0; m<this->mobs.size(); m++)
     {
 
-        cout << m+1 <<" : monstre = "<< this->mobs[m]->getNom() << " | ";
+        cout << m+1 <<" : "<< this->mobs[m]->getNom() << " | ";
         cout << " PV : ";
         if (this->mobs[m]->getVie() <= (this->mobs[m]->getVie_Max()*0.2))
         {
@@ -180,7 +184,10 @@ int Room::menu()
         this->Color(7,0);
         cout << " | ";
         cout << " ATK : ";
-        cout << this->mobs[m]->getAttaque() << endl;
+        this->Color(4,0);
+        cout << this->mobs[m]->getAttaque();
+        this->Color(7,0);
+        cout << endl;
     }
     for(i=0; i<this->loots.size(); i++)
     {
@@ -200,11 +207,10 @@ int Room::menu()
     if(ext_choice==0)
     {
         etage_clear = true;
-        cout << i+m+3 << " : etage suivant\n" ;
+        cout << i+m+3 << " : etage suivant" << endl;
     }
     this->Color(8,0);
     cout << ">" ;
-
 
     cin >> choix;
     choix -= 1;
