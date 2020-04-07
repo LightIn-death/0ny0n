@@ -10,10 +10,6 @@ class Room
 
         int menu();
 
-
-
-
-
     protected:
 
     private:

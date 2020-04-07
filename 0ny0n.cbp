@@ -34,8 +34,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Item.h" />
+		<Unit filename="include/Menu.h" />
+		<Unit filename="include/Monster.h" />
 		<Unit filename="include/Room.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Item.cpp" />
+		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/Monster.cpp" />
 		<Unit filename="src/Room.cpp" />
 		<Extensions>
 			<code_completion />

@@ -19,9 +19,22 @@ Room::~Room()
 
 
 int Room::menu(){
-    int choix;
-    cout << "[etage "<< this->etage <<"]\n1 : hello toi \n2 : Ok.\n>";
+    int nombres_de_choix_possibles_dans_le_menu = nbrMonstres + 2;
+
+    for (int a  = 0; a < choix; a++){
+        cout << "[etage "<< this->etage <<"]\n 1 : hello toi \n2 : Ok.\n>";
+    }
+
+
+
     cin >> choix;
+
+
+
+
+    if (choix == 4){
+        this->etage = -1;
+    }
 
     return this->etage+1;
 }
