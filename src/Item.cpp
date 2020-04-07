@@ -1,5 +1,12 @@
 #include "Item.h"
 
+
+#include <vector>
+
+using namespace std;
+using std::vector;
+
+
 Item::Item(){
     //ctor
 }
@@ -82,4 +89,5 @@ Epee::Epee(){
 Epee::~Epee(){
     //dtor
 }
+
 

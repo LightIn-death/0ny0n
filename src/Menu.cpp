@@ -15,25 +15,15 @@ Menu::~Menu()
     //dtor
 }
 
-void Menu::ClearConsoleInputBuffer(){
-    // If you happen to have any trouble clearing already cleared buffer, uncomment the section below.
-    /* keybd_event('S', 0, 0, 0);
-    keybd_event('S', 0,KEYEVENTF_KEYUP, 0);
-    keybd_event(VK_BACK, 0, 0, 0);
-    keybd_event(VK_BACK, 0,KEYEVENTF_KEYUP, 0); */
-    PINPUT_RECORD ClearingVar1 = new INPUT_RECORD[256];
-    DWORD ClearingVar2;
-    ReadConsoleInput(GetStdHandle(STD_INPUT_HANDLE),ClearingVar1,256,&ClearingVar2);
-    delete[] ClearingVar1;
-}
 
 void Menu::Color(int couleurDuTexte,int couleurDeFond){
         HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
 
+
 int Menu::menuPricipal(){
-    std::cin.clear();
+    cin.clear();
     int selection = 0;
     char key_press;
     int ascii_value;
@@ -61,7 +51,7 @@ int Menu::menuPricipal(){
                     cout << " ]" << endl;;
                 }
             }
-            key_press=getch();
+            key_press=_getch();
             ascii_value=key_press;
 
             if(ascii_value==72){
@@ -101,7 +91,7 @@ int Menu::menuPricipal(){
     }
 }
 
-/* int Menu::menuJouer(){
+ int Menu::menuJouer(){
     std::cin.clear();
     int selection = 0;
     char key_press;
@@ -127,7 +117,7 @@ int Menu::menuPricipal(){
                     cout << " ]" << endl;;
                 }
             }
-            key_press=getch();
+            key_press=_getch();
             ascii_value=key_press;
 
             if(ascii_value==72){
@@ -164,7 +154,7 @@ int Menu::menuPricipal(){
             break;
     }
 }
-*/
+
 void Menu::menuHistoire(){
     std::cin.clear();
     char key_press;
@@ -176,7 +166,7 @@ void Menu::menuHistoire(){
         cout << "votre promise a ete kidnape et enmene 10 pieds sous terre." << endl;
         cout << "Votre objectif ? Conquerir tous les etages afin de la sauver, mais garde " << endl;
         cout << "aux differents obstacles qui pourront vous barrez le passage." << endl;
-        key_press=getch();
+        key_press=_getch();
         ascii_value=key_press;
     }
     this->menuPricipal();
@@ -222,15 +212,18 @@ const char rocket[] =
 ";
 
 
-    for (int i = 0; i < 70; i ++) printf("\n"); // jump to bottom of console
+    for (int i = 0; i < 70; i ++){
+            cout << endl;
+    }
+         // jump to bottom of console
     this->Color(6,0);
-    printf("%s", rocket);
+    cout <<  rocket;
     this->Color(7,0);
     int j = 300000;
     for (int i = 0; i < 40; i ++) {
         usleep(j); // move faster and faster,
         j = (int)(j * 0.9995); // so sleep less each time
-        printf("\n"); // move rocket a line upward
+        cout << "\n"; // move rocket a line upward
     }
     this->menuPricipal();
 }
@@ -241,7 +234,6 @@ std::cin.clear();
     int selection = 0;
     char key_press = 0;
     int ascii_value = 0;
-    this->ClearConsoleInputBuffer();
         while (ascii_value!=13){
 
             std::cin.clear();
@@ -261,7 +253,7 @@ std::cin.clear();
                     cout << " ]" << endl;;
                 }
             }
-            key_press=getch();
+            key_press=_getch();
             ascii_value=key_press;
 
             if(ascii_value==72){
@@ -282,7 +274,6 @@ std::cin.clear();
 
         }
         system("cls");
-        this->ClearConsoleInputBuffer();
 
         switch(selection){
         case 0:
@@ -292,6 +283,10 @@ std::cin.clear();
         case 1:
             std::cin.clear();
             return selection;
+            break;
+        case 2:
+            std::cin.clear();
+            return this->menuPricipal();
             break;
     }
 

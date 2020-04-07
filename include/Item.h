@@ -1,11 +1,16 @@
 #ifndef ITEM_H
 #define ITEM_H
+#include <iostream>
+
+using namespace std;
 
 
 class Item{
+
+
     public:
-        Monster();
-        virtual ~Monster();
+        Item();
+        virtual ~Item();
 
         void setNom(string val);
         void setVie(int val);
@@ -17,8 +22,10 @@ class Item{
         int getDefense();
         int getAttaque();
 
+
+
     protected:   //héritage wsh
-        string nom;
+        string nom="Item de base";
         int vie;
         int defense;
         int attaque;
@@ -133,11 +140,14 @@ class Epee : public Arme{
         Epee();
         virtual ~Epee();
 
+
     protected:
 
     private:
+
         string nom = "Epee";
         int attaque = 5;
 };
 
 #endif // MONSTER_H
+

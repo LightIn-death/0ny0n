@@ -1,11 +1,22 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 
+#include <iostream>
+using namespace std;
+#include "Item.h"
+#include "vector"
 
-class Monster{
+using std::vector;
+using namespace std;
+
+
+class Monster
+{
+
     public:
         Monster();
         virtual ~Monster();
+
 
         void setNom(string val);
         void setVie(int val);
@@ -13,29 +24,42 @@ class Monster{
         void setAttaque(int val);
 
         string getNom();
+        string getAttaqueNom();
         int getVie();
         int getDefense();
         int getAttaque();
+        void degat(int force);
 
     protected:   //héritage wsh
-        string nom;
-        int vie;
-        int defense;
-        int attaque;
+        string nom= "Monstre Generic";
+        int vie = 10;
+        int defense = 0;
+        int attaque= 3;
+        string atk_nom = "attaque basic";
     private:
 
+
+
+
+
+
 };
+
 
 class Player : public Monster{
     public:
         Player();
         virtual ~Player();
+        void recupper(Item* item);
+    int vie = 10;
 
     protected:
         string nom = "Prince";
-        int vie = 10;
+
         int defense = 10;
-        int attaque = 1;
+        int attaque = 10;
+        vector<Item*> inventaire;
+
     private:
 
 };
