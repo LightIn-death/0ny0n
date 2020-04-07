@@ -32,32 +32,36 @@ Potion::~Potion(){
 }
 
 
+
+
 Armure::Armure(){
-    //ctor
+    //dtor
 }
 Armure::~Armure(){
     //dtor
 }
 
+
+
 Chemise::Chemise(){
-    //ctor
-}
-Chemise::~Chemise(){
-    //dtor
+    string nom = "Chemise";
+    this->vie = 0;
+    this->defense = 1;
+    this->attaque = 0;
 }
 
 Kevlar::Kevlar(){
-    //ctor
-}
-Kevlar::~Kevlar(){
-    //dtor
+    string nom = "Kevlar";
+    this->vie = 0;
+    this->defense = 3;
+    this->attaque = 0;
 }
 
 Cuirasse::Cuirasse(){
-    //ctor
-}
-Cuirasse::~Cuirasse(){
-    //dtor
+    string nom = "Cuirasse";
+    this->vie = 0;
+    this->defense = 5;
+    this->attaque = 0;
 }
 
 
@@ -69,25 +73,25 @@ Arme::~Arme(){
     //dtor
 }
 
+
+
 Baton::Baton(){
-    //ctor
-}
-Baton::~Baton(){
-    //dtor
+    string nom = "Baton";
+    this->vie = 0;
+    this->defense = 0;
+    this->attaque = 1;
 }
 
 Clavier::Clavier(){
-    //ctor
-}
-Clavier::~Clavier(){
-    //dtor
+    string nom = "Clavier";
+    this->vie = 0;
+    this->defense = 0;
+    this->attaque = 3;
 }
 
 Epee::Epee(){
-    //ctor
+    string nom = "Epee";
+    this->vie = 0;
+    this->defense = 0;
+    this->attaque = 5;
 }
-Epee::~Epee(){
-    //dtor
-}
-
-

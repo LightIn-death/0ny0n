@@ -2,3 +2,4 @@
 *.layout
 bin/Debug/
 *.cbp
+obj/Debug/
