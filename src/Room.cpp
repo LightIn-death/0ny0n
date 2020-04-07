@@ -180,7 +180,7 @@ int Room::menu()
         }
         cout << " / ";
         this->Color(2,0);
-        cout << this->mobs[m]->getVie();
+        cout << this->mobs[m]->getVie_Max();
         this->Color(7,0);
         cout << " | ";
         cout << " ATK : ";
@@ -196,13 +196,8 @@ int Room::menu()
 
     int a = this->loots.size();
     //cout << a << endl;
-    if (a == 0){
-        cout << i+m+1 << " : inventaire" << endl;
-        cout << i+m+2 << " : retour base" << endl;
-    }else{
-        cout << i+m+2 << " : inventaire" << endl;
-        cout << i+m+3 << " : retour base" << endl;
-    }
+    cout << i+m+1 << " : inventaire" << endl;
+    cout << i+m+2 << " : retour base" << endl;
 
     if(ext_choice==0)
     {
