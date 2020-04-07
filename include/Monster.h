@@ -1,8 +1,6 @@
 #ifndef MONSTER_H
 #define MONSTER_H
-
 #include <iostream>
-using namespace std;
 #include "Item.h"
 #include "vector"
 
@@ -12,65 +10,115 @@ using namespace std;
 
 class Monster
 {
+public:
+    Monster();
+    virtual ~Monster();
 
-    public:
-        Monster();
-        virtual ~Monster();
 
-        void setNom(string val);
-        void setVie(int val);
-        void setDefense(int val);
-        void setAttaque(int val);
+    virtual void setNom(string val);
+    virtual void setVie(int val);
+    virtual void setDefense(int val);
+    virtual void setAttaque(int val);
 
-        string getNom();
-        string getAttaqueNom();
-        int getVie();
-        int getDefense();
-        int getAttaque();
-        void degat(int force);
-        float getVie_Max();
+    virtual string getNom();
+    virtual string getAttaqueNom();
+    virtual int getVie();
+    virtual int getDefense();
+    virtual int getAttaque();
+    virtual void degat(int force);
+    float getVie_Max();
 
-    protected:   //héritage wsh
-        string nom= "Monstre Generic";
-        int vie = 20;
-        int defense = 0;
-        int attaque= 3;
-        string atk_nom = "attaque basic";
-        float vie_max = vie;
-    private:
+protected:   //héritage wsh
+    string nom= "Monstre Generic";
+    int vie = 10;
+    int defense = 0;
+    float vie_max=10;
+    int attaque= 3;
+    string atk_nom = "attaque basic";
+private:
+
+};
+
+
+
+
+class Zombie : public Monster
+{
+public:
+    Zombie();
 
 };
 
 
-class Player : public Monster{
-    public:
-        Player();
-        virtual ~Player();
-        void recupper(Item* item);
-    int vie = 100;
-
-    protected:
-        string nom = "Prince";
-        int defense = 10;
-        int attaque = 10;
-        vector<Item*> inventaire;
-    private:
+class Chat : public Monster
+{
+public:
+    Chat();
 
 };
 
-class Zombie : public Monster{
-    public:
-        Zombie();
-        virtual ~Zombie();
+class ChauveSouris : public Monster
+{
+public:
+    ChauveSouris();
 
-    protected:
-
-    private:
-        string nom = "Zombie";
-        int vie = 20;
-        int defense = 1;
-        int attaque = 1;
 };
+
+class Hydre : public Monster
+{
+public:
+    Hydre();
+
+};
+
+class Chmod777 : public Monster
+{
+public:
+    Chmod777();
+
+};
+
+class Dracula : public Monster
+{
+public:
+    Dracula();
+
+
+};
+
+class Vegan : public Monster
+{
+public:
+    Vegan();
+
+};
+
+
+
+
+
+
+
+
+
+
+
+class Player : public Monster
+{
+public:
+    Player();
+    virtual ~Player();
+    virtual void recupper(Item* item);
+    int vie = 1000;
+
+private:
+     vector<Item*> inventaire;
+
+};
+
+
+
+
 
 
 
