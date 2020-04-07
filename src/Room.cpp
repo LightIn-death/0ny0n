@@ -6,6 +6,7 @@
 #include <vector>
 #include <windows.h>
 #include <conio.h>
+#include <time.h>
 
 using namespace std;
 using std::vector;
@@ -13,23 +14,44 @@ using std::vector;
 
 Room::Room(int etage,Player joueur)
 {
+    srand (time(NULL));
     this->etage = etage;
     this->joueur = joueur;
 
-    for(int i=0; i<3; i++)
+    //(rand() % (2+etage) + 1)
+
+
+    for(int i=0; i<(rand() % (2+etage) + 1); i++)
     {
-        Monster* zombie = new Monster();
-        this->mobs.push_back(zombie);
+        int alea = (rand() % (etage)+1);
+        Monster* monstre;
+
+        if(alea>40){monstre = new Chmod777();}
+        else if(alea>30){monstre = new Hydre();}
+        else if(alea>20){monstre = new Dracula();}
+        else if(alea>15){monstre = new Vegan();}
+        else if(alea>10){monstre = new Zombie();}
+        else if(alea>5){monstre = new ChauveSouris();}
+        else{monstre = new Chat();}
+
+
+        this->mobs.push_back(monstre);
     }
 
-    for(int i=0; i<3; i++)
+    for(int i=0; i<(rand() % (etage) ); i++)
     {
         Item* crystal = new Item();
         this->loots.push_back(crystal);
     }
 
-
 }
+
+//###########################################################################################
+//###########################################################################################
+//###########################################################################################
+//###########################################################################################
+//###########################################################################################
+
 
 Room::~Room()
 {
@@ -63,6 +85,7 @@ int Room::menu()
 
 
     bool etage_clear=false;
+    bool invotory=false;
      int ext_choice = this->mobs.size()+this->loots.size();
     int choix = 0;
     int m;
@@ -100,7 +123,7 @@ int Room::menu()
     {
         mob_choice = choix;
     }
-    else if(choix<= this->mobs.size()+ this->loots.size())
+    else if(choix< this->mobs.size()+ this->loots.size())
     {
         loot_choice = choix - this->mobs.size();
     }
@@ -121,7 +144,7 @@ int Room::menu()
         if(this->mobs[mob_choice]->getVie()<=0)
         {
             cout << this->mobs[mob_choice]->getNom()<< " est mort\n";
-            this->mobs.erase(mobs.begin()+(mob_choice-1));
+            this->mobs.erase(mobs.begin()+(mob_choice));
         }
     }
     else if(loot_choice!= -1)
@@ -130,7 +153,9 @@ int Room::menu()
         cout << this->loots[loot_choice]->getNom()<< " a ete recuperer\n";
         this->loots.erase(loots.begin()+(loot_choice));
     }
-    else if(choix== ext_choice+1) {cout << "L'inventaire n'a pas encore ete implementer\n";}
+    else if(choix== ext_choice+1) {
+            invotory=true;
+            cout << "L'inventaire n'a pas encore ete implementer\n";}
     else if(choix== ext_choice+2) {return 0;}
     else if(choix== ext_choice+3 && etage_clear)
     {
@@ -141,14 +166,15 @@ int Room::menu()
         cout << "\n Choix Invalide, merci de ne pas essayer de casser le jeux.\n"
         <<"Les montre vous attaque comme punition\n\n";
     }
-    this->monstre_attaque();
+    if(!invotory){
+    this->monstre_attaque();}
     if(this->joueur.vie<=0){
             cout << "vous etes mort";
             _getch();
             return 0;
     }
 
-
+_getch();
     return this->etage;
 
 
