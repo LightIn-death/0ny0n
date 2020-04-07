@@ -12,7 +12,7 @@ using namespace std;
 using std::vector;
 
 
-Room::Room(int etage,Player joueur)
+Room::Room(int etage,Player* joueur)
 {
     srand (time(NULL));
     this->etage = etage;
@@ -94,7 +94,7 @@ void Room::monstre_attaque()
              <<" vous inflige " << this->mobs[m]->getAttaque() << " points de degats avec l'attaque"
              << this->mobs[m]->getAttaqueNom() << " !\n";
 
-        this->joueur.vie -= this->mobs[m]->getAttaque();
+        this->joueur->vie -= this->mobs[m]->getAttaque();
     }
 }
 
@@ -103,36 +103,43 @@ void Room::monstre_attaque()
 int Room::menu()
 {
 
-
+    this->Color(3,0);
     system("cls");
+    cout << "[" << this->joueur->getNom() <<"] ";
     cout << "[etage "<< this->etage <<"] ";
     cout << "[vie:";
 
-    float vie = this->joueur.getVie_Max();
+    float vie = this->joueur->getVie_Max();
 
-    if (this->joueur.vie <= (vie*0.2))
+    if (this->joueur->vie <= (vie*0.2))
     {
 
         this->Color(4,0);
-        cout << this->joueur.vie;
-        this->Color(7,0);
+        cout << this->joueur->vie;
+
     }
-    else if (this->joueur.vie <= (vie*0.4))
+    else if (this->joueur->vie <= (vie*0.4))
     {
         this->Color(6,0);
-        cout << this->joueur.vie;
+        cout << this->joueur->vie;
 
-        this->Color(7,0);
+
     }
     else
     {
         this->Color(2,0);
-        cout << this->joueur.vie;
-        this->Color(7,0);
+        cout << this->joueur->vie;
+
     }
+    this->Color(3,0);
+
+    cout << "] ";
+
+    cout << "[Attaque " << this->joueur->getAttaque() <<"] ";
+    cout << "[Defense " << this->joueur->getDefense() <<"] \n\n";
 
 
-    cout << "]\n\n";
+ this->Color(7,0);
 
 
     bool etage_clear=false;
@@ -179,6 +186,7 @@ int Room::menu()
         etage_clear = true;
         cout << i+m+1+3 << " : etage suivant\n" ;
     }
+    this->Color(8,0);
     cout << ">" ;
 
 
@@ -214,7 +222,7 @@ int Room::menu()
 
     if(mob_choice!= -1)
     {
-        this->mobs[mob_choice]->degat(this->joueur.getAttaque());
+        this->mobs[mob_choice]->degat(this->joueur->getAttaque());
         if(this->mobs[mob_choice]->getVie()<=0)
         {
             cout << this->mobs[mob_choice]->getNom()<< " est mort\n";
@@ -223,7 +231,7 @@ int Room::menu()
     }
     else if(loot_choice!= -1)
     {
-        this->joueur.recupper(this->loots[loot_choice]);
+        this->joueur->recupper(this->loots[loot_choice]);
         cout << this->loots[loot_choice]->getNom()<< " a ete recuperer\n";
         this->loots.erase(loots.begin()+(loot_choice));
     }
@@ -249,7 +257,7 @@ int Room::menu()
     {
         this->monstre_attaque();
     }
-    if(this->joueur.vie<=0)
+    if(this->joueur->vie<=0)
     {
         cout << "vous etes mort";
         _getch();
