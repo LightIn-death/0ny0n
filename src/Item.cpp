@@ -32,6 +32,26 @@ Armure::~Armure(){
     //dtor
 }
 
+Chemise::Chemise(){
+    //ctor
+}
+Chemise::~Chemise(){
+    //dtor
+}
+
+Kevlar::Kevlar(){
+    //ctor
+}
+Kevlar::~Kevlar(){
+    //dtor
+}
+
+Cuirasse::Cuirasse(){
+    //ctor
+}
+Cuirasse::~Cuirasse(){
+    //dtor
+}
 
 
 

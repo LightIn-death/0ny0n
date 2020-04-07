@@ -47,14 +47,47 @@ class Armure : public Item{
     protected:
         string nom = "Armure";
         int vie = 0;
-        int defense = 5;
+        int defense;
         int attaque = 0;
     private:
 
 };
 
+class Chemise : public Armure{
+    public:
+        Chemise();
+        virtual ~Chemise();
 
+    protected:
+        string nom = "Chemise";
+        int defense = 1;
+    private:
 
+};
+
+class Kevlar : public Armure{
+    public:
+        Kevlar();
+        virtual ~Kevlar();
+
+    protected:
+        string nom = "Armure";
+        int defense = 3;
+    private:
+
+};
+
+class Cuirasse : public Armure{
+    public:
+        Cuirasse();
+        virtual ~Cuirasse();
+
+    protected:
+        string nom = "Cuirasse";
+        int defense = 5;
+    private:
+
+};
 
 
 class Arme : public Item{
