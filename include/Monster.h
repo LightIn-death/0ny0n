@@ -46,51 +46,42 @@ class Zombie : public Monster
 {
 public:
     Zombie();
-
 };
-
 
 class Chat : public Monster
 {
 public:
     Chat();
-
 };
 
 class ChauveSouris : public Monster
 {
 public:
     ChauveSouris();
-
 };
 
 class Hydre : public Monster
 {
 public:
     Hydre();
-
 };
 
 class Chmod777 : public Monster
 {
 public:
     Chmod777();
-
 };
 
 class Dracula : public Monster
 {
 public:
     Dracula();
-
-
 };
 
 class Vegan : public Monster
 {
 public:
     Vegan();
-
 };
 
 

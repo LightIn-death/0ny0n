@@ -165,7 +165,7 @@ Player::Player()
 
     this->nom ="Prince";
     this->defense = 10;
-    this->attaque = 10;
+    this->attaque = 5;
     this->vie_max = float(this->vie);
 
 

@@ -110,6 +110,7 @@ int Room::menu()
 
     float vie = this->joueur.getVie_Max();
 
+
     if (this->joueur.vie <= (vie*0.2))
     {
 
@@ -150,6 +151,7 @@ int Room::menu()
 
             this->Color(4,0);
             cout << this->mobs[m]->getVie();
+
             this->Color(7,0);
         }
 
