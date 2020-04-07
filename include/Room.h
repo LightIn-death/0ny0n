@@ -10,7 +10,7 @@ using std::vector;
 class Room
 {
     public:
-        Room(int etage,Player joueur);
+        Room(int etage,Player* joueur);
         virtual ~Room();
         int menu();
 
@@ -23,7 +23,7 @@ class Room
 
 
     private:
-        Player joueur;
+        Player* joueur;
         vector<Monster*> mobs;
         vector<Item*> loots;
         int etage;

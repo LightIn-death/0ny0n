@@ -1,5 +1,10 @@
 #include "Monster.h"
 
+#include <windows.h>
+#include <iostream>
+#include <conio.h>
+using namespace std;
+
 
 Monster::Monster()
 {
@@ -163,7 +168,13 @@ Player::Player()
 {
 
 
-    this->nom ="Prince";
+    string Nom;
+    cout << "Comment vous appeler vous, prince du royaume d'0ny0n ?\n";
+    cin >> Nom;
+    this->nom = "Prince " + Nom;
+    cout << "D'accord ! Vous devez montez au 100eme etage pour sauver la princesse " << this->nom <<" !\n";
+     _getch();
+    system("cls");
     this->defense = 10;
     this->attaque = 5;
     this->vie_max = float(this->vie);

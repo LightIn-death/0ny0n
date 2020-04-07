@@ -29,7 +29,7 @@ int main(){
     {
 
         etage_old = etage;
-        Room salle = Room(etage,joueur);
+        Room salle = Room(etage,&joueur);
         while(etage == etage_old)
         {
             etage = salle.menu();
