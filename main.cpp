@@ -6,10 +6,10 @@
 #include "Player.h"
 #include <iostream>
 using namespace std;
-
+#include <time.h>
 
 int main(){
-
+srand (time(NULL));
 
     Menu* menu = new Menu();
     int selection;

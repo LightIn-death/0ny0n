@@ -26,27 +26,27 @@ Room::Room(int etage,Player* joueur)
         int alea = (rand() % (etage)+1);
         Monster* monstre;
 
-        if(alea>40)
+        if(alea>9)
         {
             monstre = new Chmod777();
         }
-        else if(alea>30)
+        else if(alea>7)
         {
             monstre = new Hydre();
         }
-        else if(alea>20)
+        else if(alea>5)
         {
             monstre = new Dracula();
         }
-        else if(alea>15)
+        else if(alea>4)
         {
             monstre = new Vegan();
         }
-        else if(alea>10)
+        else if(alea>3)
         {
             monstre = new Zombie();
         }
-        else if(alea>5)
+        else if(alea>2)
         {
             monstre = new ChauveSouris();
         }
@@ -54,15 +54,46 @@ Room::Room(int etage,Player* joueur)
         {
             monstre = new Chat();
         }
-
-
         this->mobs.push_back(monstre);
     }
 
-    for(int i=0; i<(rand() % (etage) ); i++)
+    for(int i=0; i<(rand() % (etage) +3); i++)
     {
-        Item* crystal = new Item();
-        this->loots.push_back(crystal);
+        int alea = (rand() % 100);
+        Item* item;
+
+        if(alea<=1)
+        {
+            item = new Clavier();
+        }
+        else if(alea<=5)
+        {
+            item = new Chemise();
+        }
+        else if(alea<=10)
+        {
+            item = new Epee();
+        }
+        else if(alea<=15)
+        {
+            item = new Kevlar();
+        }
+        else if(alea<=20)
+        {
+            item = new Potion();
+        }
+        else if(alea<=30)
+        {
+            item = new Cuirasse();
+        }
+        else
+        {
+            item = new Baton();
+        }
+
+
+
+        this->loots.push_back(item);
     }
 
 }
@@ -97,10 +128,7 @@ void Room::monstre_attaque()
         this->joueur->vie -= this->mobs[m]->getAttaque();
     }
 }
-
-
-
-int Room::menu()
+void Room::persoStats()
 {
 
     this->Color(3,0);
@@ -127,13 +155,11 @@ int Room::menu()
         cout << this->joueur->vie;
     }
     this->Color(3,0);
-
     cout << " / ";
     this->Color(2,0);
     cout << vie;
     this->Color(3,0);
     cout << "" << endl;
-
     cout << "[Attaque] : ";
     this->Color(4,0);
     cout << this->joueur->getAttaque();
@@ -142,8 +168,15 @@ int Room::menu()
     cout << "[Defense] : " << this->joueur->getDefense() <<" \n\n";
 
 
- this->Color(7,0);
+}
 
+
+int Room::menu()
+{
+
+    this->persoStats();
+    this->dessinerAscii();
+    this->Color(7,0);
 
     bool etage_clear=false;
     bool invotory=false;
@@ -182,8 +215,7 @@ int Room::menu()
         this->Color(2,0);
         cout << this->mobs[m]->getVie_Max();
         this->Color(7,0);
-        cout << " | ";
-        cout << " ATK : ";
+        cout << " | ATK :";
         this->Color(4,0);
         cout << this->mobs[m]->getAttaque();
         this->Color(7,0);
@@ -191,15 +223,28 @@ int Room::menu()
     }
     for(i=0; i<this->loots.size(); i++)
     {
-        cout << m+i+1 <<" : loot = "<< this->loots[i]->getNom() << endl;
+        cout << m+i+1 <<" : "<< this->loots[i]->getNom() << " "<< this->loots[i]->getPosition()<< endl;
     }
 
     int a = this->loots.size();
     //cout << a << endl;
+//<<<<<<< HEAD
     cout << i+m+1 << " : inventaire" << endl;
     cout << i+m+2 << " : retour base" << endl;
-
-    if(ext_choice==0)
+    /*=======
+        if (a == 0)
+        {
+            cout << i+m+1 << " : inventaire" << endl;
+            cout << i+m+2 << " : retour base" << endl;
+        }
+        else
+        {
+            cout << i+m+2 << " : inventaire" << endl;
+            cout << i+m+3 << " : retour base" << endl;
+        }
+    >>>>>>> Breval
+    */
+    if(this->mobs.size()==0)
     {
         etage_clear = true;
         cout << i+m+3 << " : etage suivant" << endl;
@@ -252,7 +297,8 @@ int Room::menu()
     else if(choix== ext_choice)
     {
         invotory=true;
-        cout << "L'inventaire n'a pas encore ete implementer\n";
+        inventaire();
+        //cout << "L'inventaire n'a pas encore ete implementer\n";
     }
     else if(choix== ext_choice+1)
     {
@@ -288,9 +334,103 @@ int Room::menu()
 
 
 
+void Room::inventaire()
+{
+
+    system("chcp 65001");
+    system("cls");
+    this->persoStats();
+    this->Color(6,0);
+    if(this->joueur->inventaire.size()==0)
+    {
+        cout << "\n\nTu n'a pas d'items dans ton inventaire\n";
+    }
+
+    int i;
+    for(i=0; i<this->joueur->inventaire.size(); i++)
+    {
+        cout<<"    ";
+        for(int e=0; e<this->joueur->inventaire[i]->getNom().size(); e++)
+        {
+            cout << "_";
+        }
+        cout << "\n "<< i+1 <<" |"<< this->joueur->inventaire[i]->getNom() << "|";
+//
+// Ataque ? Defance ? Vie ?
+        if(this->joueur->inventaire[i]->getAttaque() > 0)
+        {
+            cout << "/Attaque +"<<this->joueur->inventaire[i]->getAttaque()<<"/";
+        }
+        if(this->joueur->inventaire[i]->getDefense() > 0)
+        {
+            cout << "/Defense +"<<this->joueur->inventaire[i]->getDefense()<<"/";
+        }
+        if(this->joueur->inventaire[i]->getVie() > 0)
+        {
+            cout << "/vie +"<<this->joueur->inventaire[i]->getVie()<<"/";
+        }
+        cout << " {  "<<this->joueur->inventaire[i]->getDesciption()<<"  }";
+//
+//
+        cout << endl<<"    ";
+        for(int e=0; e<this->joueur->inventaire[i]->getNom().size(); e++)
+        {
+            cout << "̅";
+        }
+        cout << "\n";
+    }
 
 
 
+
+
+    cout << "\n>";
+    _getch();
+
+
+}
+
+
+void Room::dessinerAscii()
+{
+this->Color(13,6);
+    cout << "      Etage Suivant      " << endl;
+    cout << "###########[X]###########" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#          \\o/          #" << endl;
+    cout << "###########[X]###########" << endl;
+    cout << "     Porte d\'entrer      " << endl;
+
+
+    for(int i=0; i<this->mobs.size(); i++)
+    {
+        int x = (rand() % 22)+1;
+        int y = (rand() % 11)+8;
+        COORD p = { x, y };
+        SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+        cout <<"M";
+
+    }
+    for(int i=0; i<this->loots.size(); i++)
+    {
+        int x = (rand() % 22)+1;
+        int y = (rand() % 11)+8;
+        COORD p = { x, y };
+        SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+        cout <<"T";
+    }
+
+
+    COORD p = { 0, 19 };
+    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+}
 
 
 

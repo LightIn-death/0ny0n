@@ -95,9 +95,10 @@ public:
     virtual ~Player();
     virtual void recupper(Item* item);
     int vie = 1000;
+    vector<Item*> inventaire;
 
 private:
-     vector<Item*> inventaire;
+
 
 };
 
