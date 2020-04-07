@@ -17,6 +17,7 @@ class Donjon : public Entity
         virtual ~Donjon();
 
         void initDonjon();
+        vector<Room*> get_Map();
 
     protected:
 

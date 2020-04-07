@@ -1,9 +1,9 @@
 #include "Game.h"
 #include "Donjon.h"
+#include "GameConsole.h"
 #include <chrono>
 #include <iostream>
-#include <windows.h>
-#include "Menu.h"
+using namespace std;
 
 using namespace std::chrono;
 using namespace std;
@@ -13,19 +13,35 @@ Game::Game()
     this->newtime=steady_clock::now();
 }
 
+Game::~Game() {}
 
-Game::~Game()
+
+void Game::_ready()
 {
-    //dtor
+    system("cls");
+    this->console = GameConsole();
+
+
+    int i;
+    for(i=0; i<this->Map.get_Map().size(); i++)
+    {
+        this->Map.get_Map()[i]->show();
+    }
 }
 
 
-void Game::_ready() {
 
+
+void Game::_process()
+{
+
+
+
+
+//this->console.show();
 
 
 }
-void Game::_process(float delta) {}
 
 
 

@@ -2,8 +2,7 @@
 #define GAME_H
 #include <chrono>
 #include "Donjon.h"
-
-
+#include "GameConsole.h"
 
 using namespace std::chrono;
 
@@ -15,9 +14,8 @@ class Game
         Game();
         virtual ~Game();
 
-
         void _ready();
-        void _process(float delta);
+        void _process();
         void _update_delta();
         float delta;
         int debut_game = 0;
@@ -25,9 +23,11 @@ class Game
     protected:
 
 
+
     private:
-       steady_clock::time_point   oldtime;
-       steady_clock::time_point   newtime;
+        GameConsole console;
+        steady_clock::time_point oldtime;
+        steady_clock::time_point newtime;
 
 Donjon Map = Donjon();
 };

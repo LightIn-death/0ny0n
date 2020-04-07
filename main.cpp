@@ -8,6 +8,8 @@
 using namespace std;
 
 
+    Game game= Game();
+           game._ready();
 
 int main(){
     Menu* menu = new Menu();
