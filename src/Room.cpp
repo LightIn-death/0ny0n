@@ -36,7 +36,10 @@ Room::~Room()
     //dtor
 }
 
-
+void Room::Color(int couleurDuTexte,int couleurDeFond){
+        HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
+}
 
 void Room::monstre_attaque(){
     int m;
@@ -59,7 +62,29 @@ int Room::menu()
 
     system("cls");
     cout << "[etage "<< this->etage <<"] ";
-    cout << "[vie:"<<this->joueur.vie<<"]\n\n";
+    cout << "[vie:";
+
+    float vie = this->joueur.getVie_Max();
+
+    if (this->joueur.vie <= (vie*0.2)){
+
+        this->Color(4,0);
+        cout << this->joueur.vie;
+        this->Color(7,0);
+    }else if (this->joueur.vie <= (vie*0.4)){
+        this->Color(6,0);
+        cout << this->joueur.vie;
+
+        this->Color(7,0);
+    }else{
+        this->Color(2,0);
+        cout << this->joueur.vie;
+        cout << "" << vie;
+        this->Color(7,0);
+     }
+
+
+    cout << "]\n\n";
 
 
     bool etage_clear=false;
@@ -69,9 +94,27 @@ int Room::menu()
     int i;
     for(m=0; m<this->mobs.size(); m++)
     {
-        cout << m+1 <<" : monstre = "<< this->mobs[m]->getNom()
-             <<"  //" << this->mobs[m]->getVie() << " pv/"
-             << this->mobs[m]->getAttaque() << " atk// \n";
+
+        cout << m+1 <<" : monstre = "<< this->mobs[m]->getNom() <<"  //";
+             if (this->mobs[m]->getVie() <= (this->joueur.getVie_Max()*0.2)){
+
+                this->Color(4,0);
+                cout << this->mobs[m]->getVie();
+                this->Color(7,0);
+             }
+
+             else if (this->mobs[m]->getVie() <= (this->joueur.getVie_Max()*0.4)){
+                this->Color(6,0);
+                cout << this->mobs[m]->getVie();
+                this->Color(7,0);
+             }
+
+             else{
+                this->Color(2,0);
+                cout << this->mobs[m]->getVie();
+                this->Color(7,0);
+             }
+        cout << " pv/" << this->mobs[m]->getAttaque() << " atk// \n";
     }
     for(i=0; i<this->loots.size(); i++)
     {
@@ -96,11 +139,11 @@ int Room::menu()
     int loot_choice = -1;
     int mob_choice = -1;
 
-    if(choix< this->mobs.size())
+    if(choix < this->mobs.size())
     {
         mob_choice = choix;
     }
-    else if(choix<= this->mobs.size()+ this->loots.size())
+    else if(choix < this->mobs.size()+ this->loots.size())
     {
         loot_choice = choix - this->mobs.size();
     }
@@ -115,13 +158,13 @@ int Room::menu()
 */
 
 
-    if(mob_choice!= -1 )
+    if(mob_choice!= -1)
     {
         this->mobs[mob_choice]->degat(this->joueur.getAttaque());
         if(this->mobs[mob_choice]->getVie()<=0)
         {
             cout << this->mobs[mob_choice]->getNom()<< " est mort\n";
-            this->mobs.erase(mobs.begin()+(mob_choice-1));
+            this->mobs.erase(mobs.begin()+(mob_choice));
         }
     }
     else if(loot_choice!= -1)
@@ -139,7 +182,7 @@ int Room::menu()
     else
     {
         cout << "\n Choix Invalide, merci de ne pas essayer de casser le jeux.\n"
-        <<"Les montre vous attaque comme punition\n\n";
+        <<"Les montre vous attaquent comme punition\n\n";
     }
     this->monstre_attaque();
     if(this->joueur.vie<=0){

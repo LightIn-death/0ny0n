@@ -20,6 +20,7 @@ void Monster::setAttaque(int val) { this->attaque = val; }
 
 string Monster::getNom() { return this->nom; }
 string Monster::getAttaqueNom() { return this->atk_nom; }
+float Monster::getVie_Max() { return this->vie_max; }
 int Monster::getVie() { return this->vie; }
 int Monster::getDefense() { return this->defense; }
 int Monster::getAttaque() { return this->attaque; }
@@ -45,8 +46,7 @@ Player::~Player()
 {
     //dtor
 }
-void
-Player::recupper(Item* item){
+void Player::recupper(Item* item){
 this->inventaire.push_back(item);
 }
 
