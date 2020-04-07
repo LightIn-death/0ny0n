@@ -13,6 +13,10 @@ class Room
         Room(int etage,Player joueur);
         virtual ~Room();
         int menu();
+
+
+
+
     protected:
       void monstre_attaque();
 
