@@ -24,8 +24,10 @@ int main(){
     int etage_old;
     Player joueur = Player();
 
-    while(etage<100)
+
+    while(etage<=10)
     {
+
         etage_old = etage;
         Room salle = Room(etage,joueur);
         while(etage == etage_old)

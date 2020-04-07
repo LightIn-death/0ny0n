@@ -14,11 +14,12 @@ class Room
         virtual ~Room();
         int menu();
 
-
+        void Color(int couleurDuTexte,int couleurDeFond);
 
 
     protected:
       void monstre_attaque();
+
 
 
     private:

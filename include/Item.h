@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 class Item{
 
 
@@ -78,7 +77,7 @@ class Kevlar : public Armure{
         virtual ~Kevlar();
 
     protected:
-        string nom = "Armure";
+        string nom = "Kevlar";
         int defense = 3;
     private:
 
@@ -95,7 +94,6 @@ class Cuirasse : public Armure{
     private:
 
 };
-
 
 class Arme : public Item{
     public:

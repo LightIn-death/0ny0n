@@ -26,11 +26,13 @@ public:
     virtual int getDefense();
     virtual int getAttaque();
     virtual void degat(int force);
+    float getVie_Max();
 
 protected:   //héritage wsh
     string nom= "Monstre Generic";
     int vie = 10;
     int defense = 0;
+    float vie_max=10;
     int attaque= 3;
     string atk_nom = "attaque basic";
 private:
@@ -59,6 +61,7 @@ class ChauveSouris : public Monster
 {
 public:
     ChauveSouris();
+
 };
 
 class Hydre : public Monster
@@ -79,6 +82,7 @@ class Dracula : public Monster
 {
 public:
     Dracula();
+
 
 };
 
@@ -107,14 +111,8 @@ public:
     virtual void recupper(Item* item);
     int vie = 1000;
 
-protected:
-    string nom = "Prince";
-
-    int defense = 10;
-    int attaque = 10;
-    vector<Item*> inventaire;
-
 private:
+     vector<Item*> inventaire;
 
 };
 
