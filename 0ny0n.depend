@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1586248374 source:c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\main.cpp
+	<windows.h>
+	<conio.h>
+	"Room.h"
+	<iostream>
+
+1586248301 c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\include\room.h
+
