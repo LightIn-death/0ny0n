@@ -1,9 +1,42 @@
 # depslib dependency file v1.0
-1586248374 source:c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\main.cpp
+1586257965 source:c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\main.cpp
 	<windows.h>
 	<conio.h>
 	"Room.h"
+	"Player.h"
 	<iostream>
 
-1586248301 c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\include\room.h
+1586258149 c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\include\room.h
+	<vector>
+	"Monster.h"
+	"Player.h"
+	"Item.h"
+
+1586253168 source:c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\src\monster.cpp
+	"Monster.h"
+
+1586258560 c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\include\monster.h
+	<iostream>
+
+1586258450 source:c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\src\room.cpp
+	"Room.h"
+	"Monster.h"
+	"Item.h"
+	"Player.h"
+	<iostream>
+	<vector>
+
+1586256042 source:c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\src\item.cpp
+	"Item.h"
+	<vector>
+
+1586255929 c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\include\item.h
+	<iostream>
+
+1586258353 c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\include\player.h
+	"Item.h"
+	"vector"
+
+1586256082 source:c:\users\breva\serveur\back - snotib\projects\c\cpp\0ny0n\src\player.cpp
+	"Player.h"
 
