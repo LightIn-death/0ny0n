@@ -19,6 +19,9 @@ class Room
 
     protected:
       void monstre_attaque();
+      void inventaire();
+      void persoStats();
+     void dessinerAscii();
 
 
 

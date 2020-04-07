@@ -4,64 +4,48 @@
 
 using namespace std;
 
-class Item
+class Item // ||||||||||||||||||||||||
 {
-
-
 public:
     Item();
     virtual ~Item();
 
-    void setNom(string val);
-    void setVie(int val);
-    void setDefense(int val);
-    void setAttaque(int val);
+    virtual void setNom(string val);
+    virtual void setVie(int val);
+    virtual void setDefense(int val);
+    virtual void setAttaque(int val);
 
-    string getNom();
-    int getVie();
-    int getDefense();
-    int getAttaque();
-
+    virtual string getNom();
+    virtual string getPosition();
+    virtual string getDesciption();
+    virtual int getVie();
+    virtual int getDefense();
+    virtual int getAttaque();
+    virtual void generatePosition();
 
 
 protected:   //héritage wsh
     string nom="Item de base";
-    int vie;
-    int defense;
-    int attaque;
-private:
+    string position="position de base";
+    string description="description de base";
+    int vie=0;
+    int defense=0;
+    int attaque=0;
+
+
 };
 
-class Potion : public Item
+class Potion : public Item // ||||||||||||||||||||||||
 {
 public:
     Potion();
-    virtual ~Potion();
-
-protected:
-
-private:
-    string nom = "Potion";
-    int vie = 10;
-    int defense = 0;
-    int attaque = 0;
 };
 
-class Armure : public Item
+class Armure : public Item // ||||||||||||||||||||||||
 {
 public:
     Armure();
-    virtual ~Armure();
-
-protected:
-    string nom = "Armure";
-    int vie = 0;
-    int defense;
-    int attaque = 0;
-private:
-
 };
-
 
 class Chemise : public Armure
 {
@@ -81,17 +65,10 @@ public:
     Cuirasse();
 };
 
-
-class Arme : public Item
+class Arme : public Item // ||||||||||||||||||||||||
 {
 public:
     Arme();
-    virtual ~Arme();
-
-protected:
-
-private:
-
 };
 
 class Baton : public Arme
