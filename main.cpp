@@ -40,7 +40,7 @@ srand (time(NULL));
         }
     }
 
-    cout << "vous avez fini le jeux";
+    cout << "vous avez fini le jeux" << endl;
 
 
 

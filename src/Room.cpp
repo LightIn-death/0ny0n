@@ -173,27 +173,37 @@ void Room::persoStats()
 int Room::menu()
 {
 
-    this->persoStats();
-    this->dessinerAscii();
-    this->Color(7,0);
+
+
 
     bool etage_clear=false;
     bool invotory=false;
     int ext_choice = this->mobs.size()+this->loots.size();
-    int choix = 0;
+    int choix = 1;
     int m;
     int i;
+
+    char key_press;
+    int ascii_value = 0;
+    while(ascii_value != 13){
+        this->persoStats();
+        this->dessinerAscii();
+        this->Color(7,0);
+
     for(m=0; m<this->mobs.size(); m++)
     {
 
+        if (choix == m+1){
+            cout << "[X] ";
+        }else{
+            cout << "[ ] ";
+        }
         cout << m+1 <<" : "<< this->mobs[m]->getNom() << " | ";
         cout << " PV : ";
         if (this->mobs[m]->getVie() <= (this->mobs[m]->getVie_Max()*0.2))
         {
-
             this->Color(4,0);
             cout << this->mobs[m]->getVie();
-
             this->Color(7,0);
         }
 
@@ -216,29 +226,103 @@ int Room::menu()
         this->Color(7,0);
         cout << " | ATK :";
         this->Color(4,0);
-        cout << this->mobs[m]->getAttaque();
+        cout << this->mobs[m]->getAttaque() << endl;
         this->Color(7,0);
-        cout << endl;
+
+
+
+
     }
     for(i=0; i<this->loots.size(); i++)
     {
-        cout << m+i+1 <<" : "<< this->loots[i]->getNom() << " "<< this->loots[i]->getPosition()<< endl;
+        if (choix == m+i+1){
+            cout << "[X] ";
+        }else{
+            cout << "[ ] ";
+        }
+        cout << m+i+1 <<" : "<< this->loots[i]->getNom() << " "<< this->loots[i]->getPosition() << endl;
     }
 
     int a = this->loots.size();
 
+
+    if (choix == m+i+1){
+            cout << "[X] ";
+        }else{
+            cout << "[ ] ";
+        }
     cout << i+m+1 << " : inventaire" << endl;
+
+    if (choix == i+m+2){
+            cout << "[X] ";
+        }else{
+            cout << "[ ] ";
+        }
     cout << i+m+2 << " : retour base" << endl;
 
     if(this->mobs.empty())
     {
         etage_clear = true;
+        if (choix == m+i+3){
+            cout << "[X] ";
+        }else{
+            cout << "[ ] ";
+        }
         cout << i+m+3 << " : etage suivant" << endl;
     }
+
+    if (etage_clear == true){
+        if (choix == m+i+4){
+            cout << "[X] ";
+        }else{
+            cout << "[ ] ";
+        }
+        cout << i+m+4 << " : Quitter " << endl;
+    }else if(etage_clear == false) {
+        if (choix == m+i+3){
+            cout << "[X] ";
+        }else{
+            cout << "[ ] ";
+        }
+        cout << i+m+3 << " : Quitter " << endl;
+    }
+
     this->Color(8,0);
     cout << ">" ;
 
-    cin >> choix;
+
+
+
+        key_press=_getch();
+        ascii_value=key_press;
+
+
+
+
+        if(ascii_value==72){
+            //std::cin.clear();
+            choix -= 1;
+            if (choix < 1 && etage_clear == false){
+                choix = m+i+3;
+            }else if (choix < 1 && etage_clear == true){
+                choix = m+i+4;
+            }
+        }else if(ascii_value==80){
+            //std::cin.clear();
+            choix += 1;
+            if (choix > m+i+3 && etage_clear == false){
+                choix = 1;
+            }else if (choix > m+i+4 && etage_clear == true){
+                choix = 1;
+            }
+        }
+        //std::cin.clear();
+
+    }
+
+    //cin >> choix;
+
+
     choix -= 1;
 
     int loot_choice = -1;
@@ -293,6 +377,9 @@ int Room::menu()
     else if(choix== ext_choice+2 && etage_clear)
     {
         return this->etage+1;
+    }
+    else if ((choix== ext_choice+2)){
+        return 11;
     }
     else
     {
