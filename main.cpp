@@ -1,12 +1,9 @@
 #include <windows.h>
 #include "Menu.h"
-#include <conio.h>
 #include <iostream>
 #include "Room.h"
-#include "Player.h"
-#include <iostream>
 using namespace std;
-#include <time.h>
+#include <ctime>
 
 int main(){
 srand (time(NULL));
@@ -35,9 +32,11 @@ srand (time(NULL));
             etage = salle.menu();
         }
         if(etage==0){
+                 joueur.soigner(0);
             //base
             cout << "la base na pas encore ete implementer\n\n";
             etage++;
+
         }
     }
 

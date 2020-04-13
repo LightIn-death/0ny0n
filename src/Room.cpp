@@ -1,12 +1,11 @@
 #include "Room.h"
 #include "Monster.h"
 #include "Item.h"
-#include "Player.h"
 #include <iostream>
 #include <vector>
 #include <windows.h>
 #include <conio.h>
-#include <time.h>
+#include <ctime>
 
 using namespace std;
 using std::vector;
@@ -82,7 +81,7 @@ Room::Room(int etage,Player* joueur)
         {
             item = new Potion();
         }
-         else if(alea<=30)
+        else if(alea<=30)
         {
             item = new Cuirasse();
         }
@@ -128,9 +127,10 @@ void Room::monstre_attaque()
         this->joueur->vie -= this->mobs[m]->getAttaque();
     }
 }
-void Room::persoStats(){
+void Room::persoStats()
+{
 
-this->Color(3,0);
+    this->Color(3,0);
     system("cls");
     cout << "" << this->joueur->getNom() << endl;
     cout << "[etage]   : "<< this->etage << endl;
@@ -226,19 +226,11 @@ int Room::menu()
     }
 
     int a = this->loots.size();
-    //cout << a << endl;
-    if (a == 0)
-    {
-        cout << i+m+1 << " : inventaire" << endl;
-        cout << i+m+2 << " : retour base" << endl;
-    }
-    else
-    {
-        cout << i+m+2 << " : inventaire" << endl;
-        cout << i+m+3 << " : retour base" << endl;
-    }
 
-    if(this->mobs.size()==0)
+    cout << i+m+1 << " : inventaire" << endl;
+    cout << i+m+2 << " : retour base" << endl;
+
+    if(this->mobs.empty())
     {
         etage_clear = true;
         cout << i+m+3 << " : etage suivant" << endl;
@@ -321,9 +313,6 @@ int Room::menu()
     _getch();
     return this->etage;
 
-
-
-
 }
 
 
@@ -335,7 +324,7 @@ void Room::inventaire()
     system("cls");
     this->persoStats();
     this->Color(6,0);
-    if(this->joueur->inventaire.size()==0)
+    if(this->joueur->inventaire.empty())
     {
         cout << "\n\nTu n'a pas d'items dans ton inventaire\n";
     }
@@ -376,8 +365,6 @@ void Room::inventaire()
 
 
 
-
-
     cout << "\n>";
     _getch();
 
@@ -385,52 +372,49 @@ void Room::inventaire()
 }
 
 
-     void Room::dessinerAscii(){
+void Room::dessinerAscii()
+{
+this->Color(13,6);
+    cout << "      Etage Suivant      " << endl;
+    cout << "###########[X]###########" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#                       #" << endl;
+    cout << "#          \\o/          #" << endl;
+    cout << "###########[X]###########" << endl;
+    cout << "     Porte d\'entrer      " << endl;
 
 
-   //      COORD p = { 10, 10 };9 - 19  2- 24
-   // SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
-
-
-cout << "      Etage Suivant      " << endl;
-cout << "###########[X]###########" << endl;
-cout << "#                       #" << endl;
-cout << "#                       #" << endl;
-cout << "#                       #" << endl;
-cout << "#                       #" << endl;
-cout << "#                       #" << endl;
-cout << "#                       #" << endl;
-cout << "#                       #" << endl;
-cout << "#                       #" << endl;
-cout << "#          \\o/          #" << endl;
-cout << "###########[X]###########" << endl;
-cout << "     Porte d\'entrer     " << endl;
-
-
-    for(int i=0;i<this->mobs.size();i++){
-        int x = (rand() % 22)+1;
-        int y = (rand() % 11)+8;
-         COORD p = { x, y };
-   SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+    for(int i=0; i<this->mobs.size(); i++)
+    {
+        int x = (rand() % 20)+2;
+        int y = (rand() % 8)+8;
+        COORD p = { x, y };
+        SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
         cout <<"M";
 
     }
-
-        for(int i=0;i<this->loots.size();i++){
-        int x = (rand() % 22)+1;
-        int y = (rand() % 11)+8;
-         COORD p = { x, y };
-   SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+    for(int i=0; i<this->loots.size(); i++)
+    {
+        int x = (rand() % 20)+2;
+        int y = (rand() % 8)+8;
+        COORD p = { x, y };
+        SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
         cout <<"T";
-
     }
 
 
+    COORD p = { 0, 19 };
+    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+}
 
 
-         COORD p = { 0, 19 };
-   SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
-     }
+
 
 
 

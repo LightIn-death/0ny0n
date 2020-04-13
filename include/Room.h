@@ -2,7 +2,6 @@
 #define ROOM_H
 #include <vector>
 #include "Monster.h"
-#include "Player.h"
 #include "Item.h"
 using namespace std;
 using std::vector;
@@ -14,14 +13,14 @@ class Room
         virtual ~Room();
         int menu();
 
-        void Color(int couleurDuTexte,int couleurDeFond);
+        static void Color(int couleurDuTexte,int couleurDeFond);
 
 
     protected:
-      void monstre_attaque();
-      void inventaire();
-      void persoStats();
-     void dessinerAscii();
+    void monstre_attaque();
+    void inventaire();
+    void persoStats();
+    void dessinerAscii();
 
 
 

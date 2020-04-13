@@ -13,8 +13,7 @@ class Menu
         void menuHistoire();
         void menuCredits();
         int menuPause();
-        void ClearConsoleInputBuffer();
-        void Color(int color, int color2);
+        static void Color(int color, int color2);
 
     protected:
 

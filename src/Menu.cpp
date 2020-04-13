@@ -26,7 +26,7 @@ int Menu::menuPricipal(){
     cin.clear();
     int selection = 0;
     char key_press;
-    int ascii_value;
+    int ascii_value = 0;
     while (ascii_value!=13){
         std::cin.clear();
             system("cls");
@@ -95,7 +95,7 @@ int Menu::menuPricipal(){
     std::cin.clear();
     int selection = 0;
     char key_press;
-    int ascii_value;
+    int ascii_value = 0;
         while (ascii_value!=13){
             std::cin.clear();
             system("cls");
@@ -158,7 +158,7 @@ int Menu::menuPricipal(){
 void Menu::menuHistoire(){
     std::cin.clear();
     char key_press;
-    int ascii_value;
+    int ascii_value=0;
     while (ascii_value!=13){
 
         system("cls");
