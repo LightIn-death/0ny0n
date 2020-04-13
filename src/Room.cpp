@@ -1,12 +1,11 @@
 #include "Room.h"
 #include "Monster.h"
 #include "Item.h"
-#include "Player.h"
 #include <iostream>
 #include <vector>
 #include <windows.h>
 #include <conio.h>
-#include <time.h>
+#include <ctime>
 
 using namespace std;
 using std::vector;
@@ -227,24 +226,11 @@ int Room::menu()
     }
 
     int a = this->loots.size();
-    //cout << a << endl;
-//<<<<<<< HEAD
+
     cout << i+m+1 << " : inventaire" << endl;
     cout << i+m+2 << " : retour base" << endl;
-    /*=======
-        if (a == 0)
-        {
-            cout << i+m+1 << " : inventaire" << endl;
-            cout << i+m+2 << " : retour base" << endl;
-        }
-        else
-        {
-            cout << i+m+2 << " : inventaire" << endl;
-            cout << i+m+3 << " : retour base" << endl;
-        }
-    >>>>>>> Breval
-    */
-    if(this->mobs.size()==0)
+
+    if(this->mobs.empty())
     {
         etage_clear = true;
         cout << i+m+3 << " : etage suivant" << endl;
@@ -327,9 +313,6 @@ int Room::menu()
     _getch();
     return this->etage;
 
-
-
-
 }
 
 
@@ -341,7 +324,7 @@ void Room::inventaire()
     system("cls");
     this->persoStats();
     this->Color(6,0);
-    if(this->joueur->inventaire.size()==0)
+    if(this->joueur->inventaire.empty())
     {
         cout << "\n\nTu n'a pas d'items dans ton inventaire\n";
     }
@@ -382,8 +365,6 @@ void Room::inventaire()
 
 
 
-
-
     cout << "\n>";
     _getch();
 
@@ -411,8 +392,8 @@ this->Color(13,6);
 
     for(int i=0; i<this->mobs.size(); i++)
     {
-        int x = (rand() % 22)+1;
-        int y = (rand() % 11)+8;
+        int x = (rand() % 20)+2;
+        int y = (rand() % 8)+8;
         COORD p = { x, y };
         SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
         cout <<"M";
@@ -420,8 +401,8 @@ this->Color(13,6);
     }
     for(int i=0; i<this->loots.size(); i++)
     {
-        int x = (rand() % 22)+1;
-        int y = (rand() % 11)+8;
+        int x = (rand() % 20)+2;
+        int y = (rand() % 8)+8;
         COORD p = { x, y };
         SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
         cout <<"T";
@@ -431,6 +412,9 @@ this->Color(13,6);
     COORD p = { 0, 19 };
     SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
 }
+
+
+
 
 
 

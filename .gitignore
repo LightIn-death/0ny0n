@@ -3,3 +3,7 @@
 bin/Debug/
 *.cbp
 obj/Debug/
+
+.idea/
+
+cmake-build-debug/

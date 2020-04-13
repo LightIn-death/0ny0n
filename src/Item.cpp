@@ -1,12 +1,9 @@
 #include "Item.h"
 #include <iostream>
-#include <time.h>
-#include <vector>
-#include <iostream>
-#include <vector>
 #include <windows.h>
 #include <conio.h>
-#include <time.h>
+#include <ctime>
+#include <vector>
 
 using namespace std;
 using std::vector;

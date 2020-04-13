@@ -164,7 +164,7 @@ Player::Player()
     cin >> Nom;
     this->nom = "Prince " + Nom;
     cout << "D'accord ! Vous devez montez au 100eme etage pour sauver la princesse " << this->nom <<" !\n";
-     _getch();
+    _getch();
     system("cls");
     this->defense = 10;
     this->attaque = 5;
@@ -174,13 +174,30 @@ Player::Player()
 
 }
 
-Player::~Player()
+void Player::soigner(int soin=0)
 {
-    //dtor
+
+    if(soin==0)
+    {
+        this->vie = int(this->vie_max);
+    }
+    else
+    {
+        this->vie += int(this->vie_max) * soin / 100 ;
+    }
+
+    if (this->vie>int(this->vie_max))
+    {
+        this->vie = int(this->vie_max);
+    }
 }
 
-void Player::recupper(Item* item){
-this->inventaire.push_back(item);
+
+
+
+void Player::recupper(Item* item)
+{
+    this->inventaire.push_back(item);
 
 }
 
