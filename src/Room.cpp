@@ -174,7 +174,9 @@ int Room::menu()
 {
 
     this->persoStats();
-    this->dessinerAscii();
+     this->dessinerAscii();
+    this->AsciiArtMonster();
+
     this->Color(7,0);
 
     bool etage_clear=false;
@@ -415,6 +417,66 @@ this->Color(13,6);
 
 
 
+void Room::AsciiArtMonster()
+{
+
+
+
+
+
+
+
+
+
+string Art[20] = {   "               "
+                    ,"\\()7L/ "
+                    ,"  cgD                            __ _ "
+                    ,"  |\\(                          .'  Y '>, "
+                    ,"   \\ \\                        / _   _   \\"
+                    ,"    \\\\\                       )(_) (_)(|} "
+                    ,"     \\\\\\                      {  4A   } / "
+                    ,"      \\\\\\                      \\uLuJJ/\\l "
+                    ,"       \\\\\\                     |3    p)/ "
+                    ,"        \\\\\\___ __________      /nnm_n// "
+                    ,"         c7___-__,__-)\\,__)(_.  \\_>-<_/D "
+                    ,"               //V     \\__-._.__G G_c__.-__<_/ ( \\"
+                    ,"                           <_-._>__-,G_.___)\\   \\7\\ "
+                    ,"                          (_^-.__.| \\_<.__.-_ )   \\ \\ "
+                    ,"                          |-.__^\\  |^-.__.-^.\\   \\ \\ "
+                    ,"                          (^-.__^^. \\^-.__.-^.|    \\_\\"
+                    ,"                          \\^-.__^^|!|^-.__.-^.)     \\ \\"
+                    ,"                           ^-.__^^\\_|^-.__.-ç./      \\ l"
+                    ,"                           ^.__^^^>G>-.__.-^>       .--,_ "
+                    ,"                                                          "};
+
+
+
+
+
+
+
+
+
+                                            this->Color(11,0);
+           for(int j = 0; j < 20 ; j++)
+
+{
+ COORD p = { 45, 0 + j }; // 25 19
+    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+
+
+
+    cout << Art[j] << endl;
+
+           }
+
+
+
+
+
+    COORD p = { 0, 19 };
+    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+}
 
 
 

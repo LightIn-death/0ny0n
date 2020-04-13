@@ -36,6 +36,7 @@ protected:   //h�ritage wsh
     float vie_max=10;
     int attaque= 3;
     string atk_nom = "attaque basic";
+
 private:
 
 };
