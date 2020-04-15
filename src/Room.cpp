@@ -353,10 +353,8 @@ int Room::menu()
     else if(choix== ext_choice)
     {
         invotory=true;
-        int test = 1;
-        while (test != 0){
-            test = this->inventaire();
-        }
+
+        while (this->inventaire()){}
 
         //cout << "L'inventaire n'a pas encore ete implementer\n";
     }
