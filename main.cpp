@@ -1,4 +1,6 @@
+
 #include <windows.h>
+#include <MMsystem.h>
 #include "Menu.h"
 #include <iostream>
 #include <conio.h>
@@ -9,11 +11,9 @@ using namespace std;
 
 
 
-
-
-
-
-
+int main(){
+    srand (time(NULL));
+    PlaySound(TEXT("song.wav"),NULL,SND_ASYNC | SND_LOOP);
 
 void base(Player* joueur)
 {
@@ -30,6 +30,10 @@ void base(Player* joueur)
 
 
         if(joueur->Or >= 50)
+
+        etage_old = etage;
+        Room salle = Room(etage,&joueur);
+        while(etage == etage_old)
         {
 
             cout << i <<" : Vous pouvez aumenter votre vie de 50 PV \n";

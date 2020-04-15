@@ -28,6 +28,7 @@ int Menu::menuPricipal(){
     char key_press;
     int ascii_value = 0;
     while (ascii_value!=13){
+        //PlaySound(TEXT("touch.wav"),NULL,SND_ASYNC);
         std::cin.clear();
             system("cls");
             for (int i=0; i<4; i++){
