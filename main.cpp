@@ -32,7 +32,7 @@ srand (time(NULL));
             etage = salle.menu();
         }
         if(etage==0){
-                 joueur.soigner(0);
+                 joueur.soigner();
             //base
             cout << "la base na pas encore ete implementer\n\n";
             etage++;

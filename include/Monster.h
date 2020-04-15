@@ -95,7 +95,7 @@ public:
     Player();
     virtual void recupper(Item* item);
     int vie = 200;
-    virtual void soigner(int soin);
+    virtual void soigner(int soin=100);
     vector<Item*> inventaire;
 
 

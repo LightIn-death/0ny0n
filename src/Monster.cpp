@@ -174,10 +174,10 @@ Player::Player()
 
 }
 
-void Player::soigner(int soin=0)
+void Player::soigner(int soin)
 {
 
-    if(soin==0)
+    if(soin==100)
     {
         this->vie = int(this->vie_max);
     }

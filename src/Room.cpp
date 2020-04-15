@@ -353,7 +353,11 @@ int Room::menu()
     else if(choix== ext_choice)
     {
         invotory=true;
-        inventaire();
+        int test = 1;
+        while (test != 0){
+            test = this->inventaire();
+        }
+
         //cout << "L'inventaire n'a pas encore ete implementer\n";
     }
     else if(choix== ext_choice+1)
@@ -392,7 +396,7 @@ int Room::menu()
 
 
 
-void Room::inventaire()
+int Room::inventaire()
 {
 
     int choix = 1;
@@ -426,15 +430,15 @@ void Room::inventaire()
             // Ataque ? Defance ? Vie ?
             if(this->joueur->inventaire[i]->getAttaque() > 0)
             {
-                cout << "/Attaque +"<<this->joueur->inventaire[i]->getAttaque()<<"/";
+                cout << "/Attaque +"<<this->joueur->inventaire[i]->getAttaque()<<" /";
             }
             if(this->joueur->inventaire[i]->getDefense() > 0)
             {
-                cout << "/Defense +"<<this->joueur->inventaire[i]->getDefense()<<"/";
+                cout << "/Defense +"<<this->joueur->inventaire[i]->getDefense()<<" /";
             }
             if(this->joueur->inventaire[i]->getVie() > 0)
             {
-                cout << "/vie +"<<this->joueur->inventaire[i]->getVie()<<"/";
+                cout << "/vie +"<<this->joueur->inventaire[i]->getVie()<<" % /";
             }
             cout << " {  "<<this->joueur->inventaire[i]->getDesciption()<<"  }" << endl;
             //
@@ -482,15 +486,16 @@ void Room::inventaire()
 
     if (choix < this->joueur->inventaire.size())
     {
-        cout << this->joueur->inventaire[choix]->getAttaque() << endl;
-        cout << this->joueur->inventaire[choix]->getVie() << endl;
-        cout << this->joueur->inventaire[choix]->getDefense() << endl;
         this->joueur->setAttaque((this->joueur->getAttaque())+(this->joueur->inventaire[choix]->getAttaque()));
         this->joueur->setDefense((this->joueur->getDefense())+(this->joueur->inventaire[choix]->getDefense()));
-        this->joueur->vie += (this->joueur->inventaire[choix]->getVie());
+        this->joueur->soigner((this->joueur->inventaire[choix]->getVie()));
 
         this->joueur->inventaire.erase((this->joueur->inventaire.begin()) + (choix));
+        return 1;
+    }else{
+        return 0;
     }
+
     //_getch();
 
 
