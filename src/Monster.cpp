@@ -38,6 +38,11 @@ void Monster::setAttaque(int val)
     this->attaque = val;
 }
 
+   float Monster::setVie_Max(int vieSuplementaire)
+{
+     this->vie_max+= float(vieSuplementaire);
+}
+
 
 string Monster::getNom()
 {
@@ -55,6 +60,9 @@ float Monster::getVie_Max()
 {
     return this->vie_max;
 }
+
+
+
 int Monster::getDefense()
 {
     return this->defense;
@@ -179,10 +187,10 @@ Player::Player()
 
 }
 
-void Player::soigner(int soin=0)
+void Player::soigner(int soin)
 {
 
-    if(soin==0)
+    if(soin==100)
     {
         this->vie = int(this->vie_max);
     }

@@ -20,6 +20,8 @@ public:
     virtual void setVie(int val);
     virtual void setDefense(int val);
     virtual void setAttaque(int val);
+   float setVie_Max(int vieSuplementaire);
+
 
     virtual string getNom();
     virtual string getAttaqueNom();
@@ -28,6 +30,7 @@ public:
     virtual int getAttaque();
     virtual void degat(int force);
     float getVie_Max();
+
 
 protected:   //h�ritage wsh
     string nom= "Monstre Generic";
@@ -96,11 +99,11 @@ public:
     Player();
     virtual void recupper(Item* item);
     int vie = 200;
-    virtual void soigner(int soin);
+    virtual void soigner(int soin=100);
     vector<Item*> inventaire;
+    int Or = 0;
 
 
-private:
 
 
 };

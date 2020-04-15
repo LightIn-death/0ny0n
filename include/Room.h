@@ -18,7 +18,7 @@ class Room
 
     protected:
     void monstre_attaque();
-    void inventaire();
+    int inventaire();
     void persoStats();
     void dessinerAscii();
     void AsciiArtMonster();
