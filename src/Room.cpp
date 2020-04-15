@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <conio.h>
 #include <ctime>
+#include <MMsystem.h>
 
 using namespace std;
 using std::vector;
@@ -308,7 +309,7 @@ int Room::menu()
 
     //cin >> choix;
 
-
+    PlaySound(TEXT("item.wav"),NULL,SND_ASYNC);
     choix -= 1;
 
     int loot_choice = -1;
@@ -387,7 +388,7 @@ int Room::menu()
         return 11;
     }
 
-
+   // PlaySound(TEXT("item.wav"),NULL,SND_SYNC);
     return this->etage;
 
 }
@@ -402,6 +403,7 @@ int Room::inventaire()
     char key_press;
     int ascii_value = 0;
     while(ascii_value != 13){
+
         system("cls");
         int i = 0;
         this->persoStats();

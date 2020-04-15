@@ -8,7 +8,7 @@ using namespace std;
 #include <ctime>
 
 int main(){
-    PlaySound(TEXT("song1.wav"),NULL,SND_ASYNC);
+
 
 srand (time(NULL));
 
@@ -28,6 +28,7 @@ srand (time(NULL));
 
     while(etage<=10)
     {
+
 
         etage_old = etage;
         Room salle = Room(etage,&joueur);
