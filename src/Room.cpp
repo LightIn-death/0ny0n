@@ -114,6 +114,85 @@ void Room::Color(int couleurDuTexte,int couleurDeFond)
     SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
 
+void Room::base(Player* joueur)
+{
+    bool running = true;
+    while(running)
+    {
+        char key_press;
+        int ascii_value = 0;
+        int choix = 1;
+        while(ascii_value != 13){
+            system("cls");
+            int i = 1;
+              cout << "vous avez actuellement ";
+              this->Color(6,0);
+              cout << joueur->Or;
+              this->Color(7,0);
+              cout << " pieces d'or ! \n\n\n";
+            if(joueur->Or >= 50)
+            {
+                if (choix == i){
+                    cout << "[X] ";
+                }else{
+                    cout << "[ ] ";
+                }
+                cout << " Vous pouvez augmenter votre vie de 50 PV " << endl;
+                i++;
+            }
+            else
+            {
+                this->Color(4,0);
+                cout <<"Vous n\'avez pas assez d'argent !" << endl;
+                this->Color(7,0);
+            }
+
+            if (choix == i){
+                    cout << "[X] ";
+                }else{
+                    cout << "[ ] ";
+                }
+            cout << " Retourné combattre dans la tours." << endl << endl << endl;
+
+            key_press=_getch();
+            ascii_value=key_press;
+
+            if(ascii_value==72){
+                //std::cin.clear();
+                choix -= 1;
+                if (choix < 1){
+                    choix = i;
+                }
+            }else if(ascii_value==80){
+
+                choix += 1;
+                if (choix > i){
+                    choix = 1;
+                }
+            }
+
+        }
+
+            if(joueur->Or >= 50 && choix == 1)
+            {
+                cout <<" Vous avez ajoute"
+                this->Color(2,0);
+                cout << "50";
+                this->Color(7,0);
+                cout << "pv !" << endl;
+                joueur->setVie_Max(50);
+                joueur->Or-=50;
+            }
+            else
+            {
+                cout << " Preparez-vous au combat !" << endl;
+                running = false;
+            }
+            _getch();
+    }
+}
+
+
 void Room::monstre_attaque()
 {
     int m;
