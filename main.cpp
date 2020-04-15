@@ -1,4 +1,6 @@
+
 #include <windows.h>
+#include <MMsystem.h>
 #include "Menu.h"
 #include <iostream>
 #include "Room.h"
@@ -6,6 +8,8 @@ using namespace std;
 #include <ctime>
 
 int main(){
+    PlaySound(TEXT("song1.wav"),NULL,SND_ASYNC);
+
 srand (time(NULL));
 
     Menu* menu = new Menu();
