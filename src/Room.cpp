@@ -172,10 +172,6 @@ void Room::persoStats()
 
 int Room::menu()
 {
-
-
-
-
     bool etage_clear=false;
     bool invotory=false;
     int ext_choice = this->mobs.size()+this->loots.size();
@@ -198,7 +194,7 @@ int Room::menu()
         }else{
             cout << "[ ] ";
         }
-        cout << m+1 <<" : "<< this->mobs[m]->getNom() << " | ";
+        cout << this->mobs[m]->getNom() << " | ";
         cout << " PV : ";
         if (this->mobs[m]->getVie() <= (this->mobs[m]->getVie_Max()*0.2))
         {
@@ -224,13 +220,10 @@ int Room::menu()
         this->Color(2,0);
         cout << this->mobs[m]->getVie_Max();
         this->Color(7,0);
-        cout << " | ATK :";
+        cout << " | ATK : ";
         this->Color(4,0);
         cout << this->mobs[m]->getAttaque() << endl;
         this->Color(7,0);
-
-
-
 
     }
     for(i=0; i<this->loots.size(); i++)
@@ -240,7 +233,7 @@ int Room::menu()
         }else{
             cout << "[ ] ";
         }
-        cout << m+i+1 <<" : "<< this->loots[i]->getNom() << " "<< this->loots[i]->getPosition() << endl;
+        cout << this->loots[i]->getNom() << " "<< this->loots[i]->getPosition() << endl;
     }
 
     int a = this->loots.size();
@@ -251,14 +244,14 @@ int Room::menu()
         }else{
             cout << "[ ] ";
         }
-    cout << i+m+1 << " : inventaire" << endl;
+    cout << "Inventaire" << endl;
 
     if (choix == i+m+2){
             cout << "[X] ";
         }else{
             cout << "[ ] ";
         }
-    cout << i+m+2 << " : retour base" << endl;
+    cout << "Retour a la base" << endl;
 
     if(this->mobs.empty())
     {
@@ -268,7 +261,7 @@ int Room::menu()
         }else{
             cout << "[ ] ";
         }
-        cout << i+m+3 << " : etage suivant" << endl;
+        cout << "Etage suivant" << endl;
     }
 
     if (etage_clear == true){
@@ -277,27 +270,20 @@ int Room::menu()
         }else{
             cout << "[ ] ";
         }
-        cout << i+m+4 << " : Quitter " << endl;
+        cout << "Quitter " << endl;
     }else if(etage_clear == false) {
         if (choix == m+i+3){
             cout << "[X] ";
         }else{
             cout << "[ ] ";
         }
-        cout << i+m+3 << " : Quitter " << endl;
+        cout << "Quitter " << endl;
     }
 
-    this->Color(8,0);
-    cout << ">" ;
-
-
-
+    std::cin.clear();
 
         key_press=_getch();
         ascii_value=key_press;
-
-
-
 
         if(ascii_value==72){
             //std::cin.clear();
@@ -308,7 +294,7 @@ int Room::menu()
                 choix = m+i+4;
             }
         }else if(ascii_value==80){
-            //std::cin.clear();
+
             choix += 1;
             if (choix > m+i+3 && etage_clear == false){
                 choix = 1;
@@ -333,7 +319,7 @@ int Room::menu()
         mob_choice = choix;
     }
 
-    else if(choix < this->mobs.size()+ this->loots.size())
+    else if(choix < this->mobs.size() + this->loots.size())
 
     {
         loot_choice = choix - this->mobs.size();
@@ -378,7 +364,7 @@ int Room::menu()
     {
         return this->etage+1;
     }
-    else if ((choix== ext_choice+2)){
+    else if ((choix == ext_choice+2) || (choix == ext_choice+3) ){
         return 11;
     }
     else
@@ -392,12 +378,14 @@ int Room::menu()
     }
     if(this->joueur->vie<=0)
     {
-        cout << "vous etes mort";
-        _getch();
-        return 0;
+        this->Color(4,0);
+        cout << endl << "vous etes mort" << endl;
+        this->Color(7,0);
+        Sleep(2000);
+        return 11;
     }
 
-    _getch();
+
     return this->etage;
 
 }
@@ -407,53 +395,105 @@ int Room::menu()
 void Room::inventaire()
 {
 
-    system("chcp 65001");
-    system("cls");
-    this->persoStats();
-    this->Color(6,0);
-    if(this->joueur->inventaire.empty())
-    {
-        cout << "\n\nTu n'a pas d'items dans ton inventaire\n";
+    int choix = 1;
+
+    char key_press;
+    int ascii_value = 0;
+    while(ascii_value != 13){
+        system("cls");
+        int i = 0;
+        this->persoStats();
+        this->Color(6,0);
+
+        for(; i<this->joueur->inventaire.size(); i++)
+        {
+
+             if (choix == i+1){
+                cout << "[X] ";
+            }else{
+                cout << "[ ] ";
+            }
+
+            /*for(int e=0; e<this->joueur->inventaire[i]->getNom().size(); e++)
+            {
+                cout << "_";
+            }
+
+*/
+
+            cout <<" |"<< this->joueur->inventaire[i]->getNom() << "|";
+            //
+            // Ataque ? Defance ? Vie ?
+            if(this->joueur->inventaire[i]->getAttaque() > 0)
+            {
+                cout << "/Attaque +"<<this->joueur->inventaire[i]->getAttaque()<<"/";
+            }
+            if(this->joueur->inventaire[i]->getDefense() > 0)
+            {
+                cout << "/Defense +"<<this->joueur->inventaire[i]->getDefense()<<"/";
+            }
+            if(this->joueur->inventaire[i]->getVie() > 0)
+            {
+                cout << "/vie +"<<this->joueur->inventaire[i]->getVie()<<"/";
+            }
+            cout << " {  "<<this->joueur->inventaire[i]->getDesciption()<<"  }" << endl;
+            //
+            //
+            //cout << endl <<"    ";
+
+            /*for(int e=0; e<this->joueur->inventaire[i]->getNom().size(); e++)
+            {
+                cout << "¯";
+            }
+            */
+        }
+        if (choix == i+1){
+                cout << "[X] ";
+            }else{
+                cout << "[ ] ";
+            }
+        this->Color(4,0);
+        cout << " Retour" << endl;
+        this->Color(7,0);
+
+        std::cin.clear();
+
+        key_press=_getch();
+        ascii_value=key_press;
+
+        if(ascii_value==72){
+            //std::cin.clear();
+            choix -= 1;
+            if (choix < 1){
+                choix = i+1;
+            }
+        }else if(ascii_value==80){
+            choix += 1;
+            if (choix > i+1){
+                choix = 1;
+            }
+        }
+        std::cin.clear();
     }
 
-    int i;
-    for(i=0; i<this->joueur->inventaire.size(); i++)
+
+
+    choix -= 1;
+
+    if (choix < this->joueur->inventaire.size())
     {
-        cout<<"    ";
-        for(int e=0; e<this->joueur->inventaire[i]->getNom().size(); e++)
-        {
-            cout << "_";
-        }
-        cout << "\n "<< i+1 <<" |"<< this->joueur->inventaire[i]->getNom() << "|";
-//
-// Ataque ? Defance ? Vie ?
-        if(this->joueur->inventaire[i]->getAttaque() > 0)
-        {
-            cout << "/Attaque +"<<this->joueur->inventaire[i]->getAttaque()<<"/";
-        }
-        if(this->joueur->inventaire[i]->getDefense() > 0)
-        {
-            cout << "/Defense +"<<this->joueur->inventaire[i]->getDefense()<<"/";
-        }
-        if(this->joueur->inventaire[i]->getVie() > 0)
-        {
-            cout << "/vie +"<<this->joueur->inventaire[i]->getVie()<<"/";
-        }
-        cout << " {  "<<this->joueur->inventaire[i]->getDesciption()<<"  }";
-//
-//
-        cout << endl<<"    ";
-        for(int e=0; e<this->joueur->inventaire[i]->getNom().size(); e++)
-        {
-            cout << "Ì…";
-        }
-        cout << "\n";
+        cout << this->joueur->inventaire[choix]->getAttaque() << endl;
+        cout << this->joueur->inventaire[choix]->getVie() << endl;
+        cout << this->joueur->inventaire[choix]->getDefense() << endl;
+        this->joueur->setAttaque((this->joueur->getAttaque())+(this->joueur->inventaire[choix]->getAttaque()));
+        this->joueur->setDefense((this->joueur->getDefense())+(this->joueur->inventaire[choix]->getDefense()));
+        this->joueur->vie += (this->joueur->inventaire[choix]->getVie());
+
+        this->joueur->inventaire.erase((this->joueur->inventaire.begin()) + (choix));
     }
+    //_getch();
 
 
-
-    cout << "\n>";
-    _getch();
 
 
 }
