@@ -21,6 +21,7 @@ class Room
     int inventaire();
     void persoStats();
     void dessinerAscii();
+    void AsciiArtMonster();
 
 
 

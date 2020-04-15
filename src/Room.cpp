@@ -16,7 +16,6 @@ Room::Room(int etage,Player* joueur)
     srand (time(NULL));
     this->etage = etage;
     this->joueur = joueur;
-
     //(rand() % (2+etage) + 1)
 
 
@@ -125,6 +124,7 @@ void Room::monstre_attaque()
              << this->mobs[m]->getAttaqueNom() << " !\n";
 
         this->joueur->vie -= this->mobs[m]->getAttaque();
+
     }
 }
 void Room::persoStats()
@@ -172,6 +172,11 @@ void Room::persoStats()
 
 int Room::menu()
 {
+
+
+
+
+
     bool etage_clear=false;
     bool invotory=false;
     int ext_choice = this->mobs.size()+this->loots.size();
@@ -182,9 +187,14 @@ int Room::menu()
     char key_press;
     int ascii_value = 0;
     while(ascii_value != 13){
-        this->persoStats();
-        this->dessinerAscii();
-        this->Color(7,0);
+                  this->persoStats();
+    this->dessinerAscii();
+    this->AsciiArtMonster();
+
+    this->Color(7,0);
+
+
+
 
     for(m=0; m<this->mobs.size(); m++)
     {
@@ -342,6 +352,12 @@ int Room::menu()
         {
             cout << this->mobs[mob_choice]->getNom()<< " est mort\n";
             this->mobs.erase(mobs.begin()+(mob_choice));
+            int money = ( rand() % 11 ) +1;
+            this->joueur->Or += money;
+                 cout << " Vous avez gagnée "<< money<<" pieces d\'Or !\n";
+                 _getch();
+
+
         }
     }
     else if(loot_choice!= -1)
@@ -349,6 +365,7 @@ int Room::menu()
         this->joueur->recupper(this->loots[loot_choice]);
         cout << this->loots[loot_choice]->getNom()<< " a ete recuperer\n";
         this->loots.erase(loots.begin()+(loot_choice));
+        _getch();
     }
     else if(choix== ext_choice)
     {
@@ -367,16 +384,18 @@ int Room::menu()
         return this->etage+1;
     }
     else if ((choix == ext_choice+2) || (choix == ext_choice+3) ){
-        return 11;
+        return 15;
     }
     else
     {
         cout << "\n Choix Invalide, merci de ne pas essayer de casser le jeux.\n"
              <<"Les montre vous attaquent comme punition\n\n";
+             _getch();
     }
-    if(!invotory)
+    if(!invotory && this->mobs.size()!=0)
     {
         this->monstre_attaque();
+             _getch();
     }
     if(this->joueur->vie<=0)
     {
@@ -384,12 +403,9 @@ int Room::menu()
         cout << endl << "vous etes mort" << endl;
         this->Color(7,0);
         Sleep(2000);
-        return 11;
+        return 0;
     }
-
-
     return this->etage;
-
 }
 
 
@@ -545,6 +561,60 @@ this->Color(13,6);
 
 
 
+
+void Room::AsciiArtMonster()
+{
+
+
+string Art[20] = {   "               "
+                    ,"\\()7L/ "
+                    ,"  cgD                            __ _ "
+                    ,"  |\\(                          .'  Y '>, "
+                    ,"   \\ \\                        / _   _   \\"
+                    ,"    \\\\\                       )(_) (_)(|} "
+                    ,"     \\\\\\                      {  4A   } / "
+                    ,"      \\\\\\                      \\uLuJJ/\\l "
+                    ,"       \\\\\\                     |3    p)/ "
+                    ,"        \\\\\\___ __________      /nnm_n// "
+                    ,"         c7___-__,__-)\\,__)(_.  \\_>-<_/D "
+                    ,"               //V     \\__-._.__G G_c__.-__<_/ ( \\"
+                    ,"                           <_-._>__-,G_.___)\\   \\7\\ "
+                    ,"                          (_^-.__.| \\_<.__.-_ )   \\ \\ "
+                    ,"                          |-.__^\\  |^-.__.-^.\\   \\ \\ "
+                    ,"                          (^-.__^^. \\^-.__.-^.|    \\_\\"
+                    ,"                          \\^-.__^^|!|^-.__.-^.)     \\ \\"
+                    ,"                           ^-.__^^\\_|^-.__.-Ã§./      \\ l"
+                    ,"                           ^.__^^^>G>-.__.-^>       .--,_ "
+                    ,"                                                          "};
+
+
+
+
+
+
+
+
+
+                                            this->Color(11,0);
+           for(int j = 0; j < 20 ; j++)
+
+{
+ COORD p = { 45, 0 + j }; // 25 19
+    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+
+
+
+    cout << Art[j] << endl;
+
+           }
+
+
+
+
+
+    COORD p = { 0, 19 };
+    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+}
 
 
 

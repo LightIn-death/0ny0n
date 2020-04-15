@@ -38,6 +38,11 @@ void Monster::setAttaque(int val)
     this->attaque = val;
 }
 
+   float Monster::setVie_Max(int vieSuplementaire)
+{
+     this->vie_max+= float(vieSuplementaire);
+}
+
 
 string Monster::getNom()
 {
@@ -55,6 +60,9 @@ float Monster::getVie_Max()
 {
     return this->vie_max;
 }
+
+
+
 int Monster::getDefense()
 {
     return this->defense;
@@ -104,6 +112,11 @@ Zombie::Zombie()
     this->defense = 10;
     this->attaque = 35;
     this->atk_nom = "Morsure en decomposition";
+
+
+
+
+
 }
 
 Dracula::Dracula()
