@@ -6,7 +6,6 @@
 #include <windows.h>
 #include <conio.h>
 #include <ctime>
-#include <MMsystem.h>
 
 using namespace std;
 using std::vector;
@@ -182,6 +181,7 @@ int Room::menu()
 
     char key_press;
     int ascii_value = 0;
+
     while(ascii_value != 13){
         this->persoStats();
         this->dessinerAscii();
@@ -309,7 +309,7 @@ int Room::menu()
 
     //cin >> choix;
 
-    PlaySound(TEXT("item.wav"),NULL,SND_ASYNC);
+    //PlaySound(TEXT("item.wav"),NULL,SND_ASYNC);
     choix -= 1;
 
     int loot_choice = -1;
@@ -544,16 +544,3 @@ this->Color(13,6);
     COORD p = { 0, 19 };
     SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

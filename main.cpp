@@ -7,10 +7,11 @@
 using namespace std;
 #include <ctime>
 
+
+
 int main(){
-
-
-srand (time(NULL));
+    srand (time(NULL));
+    PlaySound(TEXT("song.wav"),NULL,SND_ASYNC | SND_LOOP);
 
     Menu* menu = new Menu();
     int selection;
