@@ -10,17 +10,14 @@ Menu::Menu()
     //ctor
 }
 
-Menu::~Menu()
-{
+Menu::~Menu(){
     //dtor
 }
-
 
 void Menu::Color(int couleurDuTexte,int couleurDeFond){
         HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(H,couleurDeFond*16+couleurDuTexte);
 }
-
 
 int Menu::menuPricipal(){
     cin.clear();
@@ -164,9 +161,9 @@ void Menu::menuHistoire(){
 
         system("cls");
         cout << "Vous etes le jeune prince du royaume d'0ny0n malheureusemment" << endl;
-        cout << "votre promise a ete kidnape et enmene 10 pieds sous terre." << endl;
+        cout << "votre promise a ete kidnape et enmene au sommet d'une tour dite insurmontable." << endl;
         cout << "Votre objectif ? Conquerir tous les etages afin de la sauver, mais garde " << endl;
-        cout << "aux differents obstacles qui pourront vous barrez le passage." << endl;
+        cout << "aux differents obstacles qui pourront vous barrer la route." << endl;
         key_press=_getch();
         ascii_value=key_press;
     }

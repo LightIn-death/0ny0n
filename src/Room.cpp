@@ -175,9 +175,9 @@ void Room::base(Player* joueur)
 
             if(joueur->Or >= 50 && choix == 1)
             {
-                cout <<" Vous avez ajoute"
+                cout <<" Vous avez ajoute";
                 this->Color(2,0);
-                cout << "50";
+                cout << " 50 ";
                 this->Color(7,0);
                 cout << "pv !" << endl;
                 joueur->setVie_Max(50);
@@ -185,7 +185,7 @@ void Room::base(Player* joueur)
             }
             else
             {
-                cout << " Preparez-vous au combat !" << endl;
+                cout << "Preparez-vous au combat !" << endl;
                 running = false;
             }
             _getch();
@@ -298,8 +298,6 @@ int Room::menu()
 
         cout << endl << endl;
         this->Color(7,0);
-
-
 
 
         for(m=0; m<this->mobs.size(); m++)
@@ -525,7 +523,7 @@ int Room::menu()
         this->Color(4,0);
         cout << endl << "vous etes mort" << endl;
         this->Color(7,0);
-        Sleep(2000);
+        _getch();
         return 0;
     }
 
