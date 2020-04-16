@@ -43,7 +43,7 @@ Room::Room(int etage,Player* joueur)
         int alea = (rand() % (etage)+1);
         Monster* monstre;
 
-        if(alea>9)
+        if(alea>8)
         {
             monstre = new Chmod777();
         }
@@ -210,8 +210,6 @@ void Room::base(Player* joueur)
             _getch();
     }
 }
-
-
 
 void Room::monstre_attaque()
 {
@@ -431,7 +429,7 @@ int Room::menu()
         ascii_value=key_press;
 
         if(ascii_value==72){
-            //std::cin.clear();
+
             choix -= 1;
             if (choix < 1 && etage_clear == false){
                 choix = m+i+3;
@@ -447,13 +445,8 @@ int Room::menu()
                 choix = 1;
             }
         }
-        //std::cin.clear();
-
     }
 
-    //cin >> choix;
-
-    //PlaySound(TEXT("item.wav"),NULL,SND_ASYNC);
     choix -= 1;
 
     int loot_choice = -1;
@@ -471,13 +464,6 @@ int Room::menu()
     }
 
 
-    /*
-            DEBUGAGE
-        cout << "mob = "<< mob_choice<< endl;
-        cout << "loot = "<< loot_choice<< endl;
-        cout << "ext = "<<ext_choice << endl;
-        cout << "choix = "<<  choix<< endl;
-    */
 
 
     if(mob_choice!= -1)
@@ -490,9 +476,8 @@ int Room::menu()
             this->Color(4,0);
             cout << " est mort\n";
             this->Color(7,0);
-
+            int money = ( rand() % int( this->mobs[mob_choice]->getVie_Max() /2)  ) +1;
             this->mobs.erase(mobs.begin()+(mob_choice));
-            int money = ( rand() % 11 ) +1;
             this->joueur->Or += money;
                  cout << "Vous avez gagne ";
                  this->Color(6,0);
@@ -518,7 +503,6 @@ int Room::menu()
 
         while (this->inventaire()){}
 
-        //cout << "L'inventaire n'a pas encore ete implementer\n";
     }
     else if(choix== ext_choice+1)
     {
@@ -577,18 +561,12 @@ int Room::inventaire()
                 cout << "[ ] ";
             }
 
-            /*for(int e=0; e<this->joueur->inventaire[i]->getNom().size(); e++)
-            {
-                cout << "_";
-            }
 
-*/
             cout <<" |";
             this->Color(11,0);
             cout << this->joueur->inventaire[i]->getNom();
             this->Color(7,0);
-            //
-            // Ataque ? Defance ? Vie ?
+
             if(this->joueur->inventaire[i]->getAttaque() > 0)
             {
                 cout << "| Attaque + ";
@@ -614,15 +592,8 @@ int Room::inventaire()
                 cout << "|";
             }
             cout << " {  "<<this->joueur->inventaire[i]->getDesciption()<<"  }" << endl;
-            //
-            //
-            //cout << endl <<"    ";
 
-            /*for(int e=0; e<this->joueur->inventaire[i]->getNom().size(); e++)
-            {
-                cout << "¯";
-            }
-            */
+
         }
         if (choix == i+1){
                 cout << "[X] ";
@@ -717,7 +688,6 @@ this->Color(13,6);
     COORD p = { 0, 19 };
     SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
 }
-
 
 void Room::AsciiArtMonster()
 {

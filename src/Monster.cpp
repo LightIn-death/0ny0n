@@ -77,30 +77,30 @@ int Monster::getAttaque()
 Chat::Chat()
 {
     this->nom = "chat Habile";
-    this->vie = 9;
+    this->vie = 10;
     this->vie_max = float(this->vie);
-    this->defense = 3;
-    this->attaque = 4;
+    this->defense = 0;
+    this->attaque = 12;
     this->atk_nom = "griffure de felin";
 }
 
 ChauveSouris::ChauveSouris()
 {
     this->nom = "Chauve-Souris Malade";
-    this->vie = 18;
+    this->vie = 20;
     this->vie_max = float(this->vie);
-    this->defense = 5;
-    this->attaque = 10;
+    this->defense = 0;
+    this->attaque = 12;
     this->atk_nom = "Transfert de virus";
 }
 
 Vegan::Vegan()
 {
     this->nom = "Le Vegan extremiste";
-    this->vie = 70;
+    this->vie = 40;
     this->vie_max = float(this->vie);
-    this->defense = 40;
-    this->attaque = 58;
+    this->defense = 0;
+    this->attaque = 51;
     this->atk_nom = "Argument falacieux";
 }
 
@@ -110,44 +110,45 @@ Zombie::Zombie()
     this->vie = 80;
     this->vie_max = float(this->vie);
     this->defense = 10;
-    this->attaque = 35;
+    this->attaque = 103;
     this->atk_nom = "Morsure en decomposition";
-
-
-
-
 
 }
 
 Dracula::Dracula()
 {
     this->nom = "Dracula qui a soif";
-    this->vie = 150;
+    this->vie = 160;
     this->vie_max = float(this->vie);
     this->defense = 80;
-    this->attaque = 85;
+    this->attaque = 209;
     this->atk_nom = "sucon d'amoureux";
 }
 
 Hydre::Hydre()
 {
     this->nom = "Hydre qui louche";
-    this->vie = 250;
+    this->vie = 230;
     this->vie_max = float(this->vie);
     this->defense = 120;
-    this->attaque = 325;
+    this->attaque = 328;
     this->atk_nom = "Brulure des cieux";
 }
 
 Chmod777::Chmod777()
 {
     this->nom = "Le chmod 777 /";
-    this->vie = 999;
+    this->vie = 777;
     this->vie_max = float(this->vie);
-    this->defense = 777;
+    this->defense = 0;
     this->attaque = 777;
     this->atk_nom = "SUDO shutdown";
 }
+
+
+
+
+
 
 
 
