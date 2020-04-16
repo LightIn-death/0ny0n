@@ -177,10 +177,10 @@ Player::Player()
     cout << "Comment vous appeler vous, prince du royaume d'0ny0n ?\n";
     cin >> Nom;
     this->nom = Nom;
-    cout << "D'accord ! Vous devez montez au 10eme etage pour sauver la princesse, Prince " << this->nom <<" !\n";
+    cout << "D'accord ! Vous devez monte au 10eme etage pour sauver la princesse, Prince " << this->nom <<" !\n";
     _getch();
     system("cls");
-    this->defense = 10;
+    this->defense = 0;
     this->attaque = 5;
     this->vie_max = float(this->vie);
 

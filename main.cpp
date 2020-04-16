@@ -25,8 +25,12 @@ int main()
 {
     srand (time(NULL));
 
-    thread snd(music);
-    snd.join();
+    //thread snd(music);
+    //snd.join();
+
+    PlaySound(TEXT("song.wav"),NULL,SND_ASYNC | SND_NOWAIT | SND_NOSTOP);
+
+
 
     Menu* menu = new Menu();
     int selection;

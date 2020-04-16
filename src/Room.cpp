@@ -4,27 +4,11 @@
 #include <iostream>
 #include <conio.h>
 #include "Room.h"
-using namespace std;
 #include <ctime>
-#include "Room.h"
 #include "Monster.h"
 #include "Item.h"
-#include <iostream>
 #include <vector>
-#include <windows.h>
-#include <conio.h>
-#include <ctime>
 #include <thread>
-#include <mmsystem.h>
-#include <windows.h>
-#include "Menu.h"
-#include <mmsystem.h>
-#include <iostream>
-#include <conio.h>
-#include "Room.h"
-using namespace std;
-#include <ctime>
-
 
 using namespace std;
 using std::vector;
@@ -141,8 +125,10 @@ void Room::base(Player* joueur)
         char key_press;
         int ascii_value = 0;
         int choix = 1;
-        while(ascii_value != 13)
-        {
+
+        while(ascii_value != 13){
+
+
             system("cls");
             int i = 1;
             cout << "vous avez actuellement ";
@@ -181,6 +167,10 @@ void Room::base(Player* joueur)
             cout << " Retourné combattre dans la tours." << endl << endl << endl;
 
             key_press=_getch();
+            if (key_press == -32){
+                key_press=_getch();
+            }
+
             ascii_value=key_press;
 
             if(ascii_value==72)
@@ -204,22 +194,24 @@ void Room::base(Player* joueur)
 
         }
 
-        if(joueur->Or >= 50 && choix == 1)
-        {
-            cout <<" Vous avez ajoute";
-            this->Color(2,0);
-            cout << "50";
-            this->Color(7,0);
-            cout << "pv !" << endl;
-            joueur->setVie_Max(50);
-            joueur->Or-=50;
-        }
-        else
-        {
-            cout << " Preparez-vous au combat !" << endl;
-            running = false;
-        }
-        _getch();
+
+            if(joueur->Or >= 50 && choix == 1)
+            {
+                cout <<" Vous avez ajoute";
+                this->Color(2,0);
+                cout << " 50 ";
+                this->Color(7,0);
+                cout << "pv !" << endl;
+                joueur->setVie_Max(50);
+                joueur->Or-=50;
+            }
+            else
+            {
+                cout << "Preparez-vous au combat !" << endl;
+                running = false;
+            }
+            _getch();
+
     }
 }
 
@@ -327,16 +319,17 @@ int Room::menu()
     char key_press;
     int ascii_value = 0;
 
-    while(ascii_value != 13)
-    {
+
+    while(ascii_value != 13){
+
+        PlaySound(TEXT("sound60.wav"),NULL,SND_ASYNC);
+
         this->persoStats();
         this->dessinerAscii();
         this->AsciiArtMonster();
 
         cout << endl << endl;
         this->Color(7,0);
-
-
 
 
         for(m=0; m<this->mobs.size(); m++)
@@ -464,22 +457,17 @@ int Room::menu()
             cout << "Quitter " << endl;
         }
 
-        std::cin.clear();
-
 
         key_press=_getch();
-
-        if (  key_press==-32  )
-        {
+        if (key_press == -32 ){
             key_press=_getch();
-
         }
-
 
         ascii_value=key_press;
 
-        if(ascii_value==72)
-        {
+
+        if(ascii_value==72){
+            //std::cin.clear();
 
             choix -= 1;
             if (choix < 1 && etage_clear == false)
@@ -504,6 +492,7 @@ int Room::menu()
                 choix = 1;
             }
         }
+
     }
 
     choix -= 1;
@@ -591,7 +580,7 @@ int Room::menu()
         this->Color(4,0);
         cout << endl << "vous etes mort" << endl;
         this->Color(7,0);
-        Sleep(2000);
+        _getch();
         return 0;
     }
 
@@ -674,6 +663,11 @@ int Room::inventaire()
         std::cin.clear();
 
         key_press=_getch();
+
+        if (key_press == -32 ){
+            key_press=_getch();
+        }
+
         ascii_value=key_press;
 
         if(ascii_value==72)
