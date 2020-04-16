@@ -19,8 +19,9 @@ PlaySound(TEXT("song.wav"),NULL,SND_ASYNC | SND_LOOP);
 int main()
 {
     srand (time(NULL));
-    thread snd(music);
-    snd.join();
+    //thread snd(music);
+    //snd.join();
+
     Menu* menu = new Menu();
     int selection;
     int debut_game = 0;
