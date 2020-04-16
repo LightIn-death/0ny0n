@@ -2,6 +2,15 @@
 #define ROOM_H
 #include <vector>
 #include "Monster.h"
+#include <mmsystem.h>
+#include <windows.h>
+#include "Menu.h"
+#include <mmsystem.h>
+#include <iostream>
+#include <conio.h>
+#include "Room.h"
+using namespace std;
+#include <ctime>
 #include "Item.h"
 using namespace std;
 using std::vector;
