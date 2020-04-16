@@ -113,10 +113,6 @@ Zombie::Zombie()
     this->attaque = 35;
     this->atk_nom = "Morsure en decomposition";
 
-
-
-
-
 }
 
 Dracula::Dracula()

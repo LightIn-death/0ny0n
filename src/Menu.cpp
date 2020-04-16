@@ -50,6 +50,10 @@ int Menu::menuPricipal(){
                 }
             }
             key_press=_getch();
+            if (key_press == -32 ){
+                key_press=_getch();
+            }
+
             ascii_value=key_press;
 
             if(ascii_value==72){
@@ -116,6 +120,9 @@ int Menu::menuPricipal(){
                 }
             }
             key_press=_getch();
+            if (key_press == -32 ){
+                key_press=_getch();
+            }
             ascii_value=key_press;
 
             if(ascii_value==72){
@@ -164,7 +171,12 @@ void Menu::menuHistoire(){
         cout << "votre promise a ete kidnape et enmene au sommet d'une tour dite insurmontable." << endl;
         cout << "Votre objectif ? Conquerir tous les etages afin de la sauver, mais garde " << endl;
         cout << "aux differents obstacles qui pourront vous barrer la route." << endl;
+
         key_press=_getch();
+
+        if (key_press == -32 ){
+            key_press=_getch();
+        }
         ascii_value=key_press;
     }
     this->menuPricipal();
@@ -252,6 +264,9 @@ std::cin.clear();
                 }
             }
             key_press=_getch();
+            if (key_press == -32 ){
+                key_press=_getch();
+            }
             ascii_value=key_press;
 
             if(ascii_value==72){

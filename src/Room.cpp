@@ -126,6 +126,7 @@ void Room::base(Player* joueur)
         int ascii_value = 0;
         int choix = 1;
         while(ascii_value != 13){
+
             system("cls");
             int i = 1;
               cout << "vous avez actuellement ";
@@ -158,6 +159,10 @@ void Room::base(Player* joueur)
             cout << " Retourné combattre dans la tours." << endl << endl << endl;
 
             key_press=_getch();
+            if (key_press == -32){
+                key_press=_getch();
+            }
+
             ascii_value=key_press;
 
             if(ascii_value==72){
@@ -298,6 +303,8 @@ int Room::menu()
     int ascii_value = 0;
 
     while(ascii_value != 13){
+
+        PlaySound(TEXT("sound60.wav"),NULL,SND_ASYNC);
         this->persoStats();
         this->dessinerAscii();
         this->AsciiArtMonster();
@@ -407,10 +414,13 @@ int Room::menu()
             cout << "Quitter " << endl;
         }
 
-        std::cin.clear();
-
         key_press=_getch();
+        if (key_press == -32 ){
+            key_press=_getch();
+        }
+
         ascii_value=key_press;
+
 
         if(ascii_value==72){
             //std::cin.clear();
@@ -429,7 +439,8 @@ int Room::menu()
                 choix = 1;
             }
         }
-        //std::cin.clear();
+
+
 
     }
 
@@ -618,6 +629,11 @@ int Room::inventaire()
         std::cin.clear();
 
         key_press=_getch();
+
+        if (key_press == -32 ){
+            key_press=_getch();
+        }
+
         ascii_value=key_press;
 
         if(ascii_value==72){
