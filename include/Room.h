@@ -2,7 +2,15 @@
 #define ROOM_H
 #include <vector>
 #include "Monster.h"
-#include "Player.h"
+#include <mmsystem.h>
+#include <windows.h>
+#include "Menu.h"
+#include <mmsystem.h>
+#include <iostream>
+#include <conio.h>
+#include "Room.h"
+using namespace std;
+#include <ctime>
 #include "Item.h"
 using namespace std;
 using std::vector;
@@ -14,14 +22,16 @@ class Room
         virtual ~Room();
         int menu();
 
-        void Color(int couleurDuTexte,int couleurDeFond);
-
+        static void Color(int couleurDuTexte,int couleurDeFond);
+        void base(Player* joueur);
 
     protected:
-      void monstre_attaque();
-      void inventaire();
-      void persoStats();
-     void dessinerAscii();
+    void monstre_attaque();
+    int inventaire();
+    void persoStats();
+    void dessinerAscii();
+    void AsciiArtMonster();
+
 
 
 

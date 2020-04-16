@@ -38,6 +38,11 @@ void Monster::setAttaque(int val)
     this->attaque = val;
 }
 
+   float Monster::setVie_Max(int vieSuplementaire)
+{
+     this->vie_max+= float(vieSuplementaire);
+}
+
 
 string Monster::getNom()
 {
@@ -55,6 +60,9 @@ float Monster::getVie_Max()
 {
     return this->vie_max;
 }
+
+
+
 int Monster::getDefense()
 {
     return this->defense;
@@ -104,6 +112,11 @@ Zombie::Zombie()
     this->defense = 10;
     this->attaque = 35;
     this->atk_nom = "Morsure en decomposition";
+
+
+
+
+
 }
 
 Dracula::Dracula()
@@ -162,9 +175,9 @@ Player::Player()
     string Nom;
     cout << "Comment vous appeler vous, prince du royaume d'0ny0n ?\n";
     cin >> Nom;
-    this->nom = "Prince " + Nom;
-    cout << "D'accord ! Vous devez montez au 100eme etage pour sauver la princesse " << this->nom <<" !\n";
-     _getch();
+    this->nom = Nom;
+    cout << "D'accord ! Vous devez montez au 10eme etage pour sauver la princesse, Prince " << this->nom <<" !\n";
+    _getch();
     system("cls");
     this->defense = 10;
     this->attaque = 5;
@@ -174,13 +187,30 @@ Player::Player()
 
 }
 
-Player::~Player()
+void Player::soigner(int soin)
 {
-    //dtor
+
+    if(soin==100)
+    {
+        this->vie = int(this->vie_max);
+    }
+    else
+    {
+        this->vie += int(this->vie_max) * soin / 100 ;
+    }
+
+    if (this->vie>int(this->vie_max))
+    {
+        this->vie = int(this->vie_max);
+    }
 }
 
-void Player::recupper(Item* item){
-this->inventaire.push_back(item);
+
+
+
+void Player::recupper(Item* item)
+{
+    this->inventaire.push_back(item);
 
 }
 

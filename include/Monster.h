@@ -1,8 +1,9 @@
 #ifndef MONSTER_H
 #define MONSTER_H
 #include <iostream>
+#include <vector>
 #include "Item.h"
-#include "vector"
+
 
 using std::vector;
 using namespace std;
@@ -19,6 +20,8 @@ public:
     virtual void setVie(int val);
     virtual void setDefense(int val);
     virtual void setAttaque(int val);
+   float setVie_Max(int vieSuplementaire);
+
 
     virtual string getNom();
     virtual string getAttaqueNom();
@@ -28,13 +31,15 @@ public:
     virtual void degat(int force);
     float getVie_Max();
 
-protected:   //héritage wsh
+
+protected:   //hï¿½ritage wsh
     string nom= "Monstre Generic";
     int vie = 10;
     int defense = 0;
     float vie_max=10;
     int attaque= 3;
     string atk_nom = "attaque basic";
+
 private:
 
 };
@@ -92,12 +97,13 @@ class Player : public Monster
 {
 public:
     Player();
-    virtual ~Player();
     virtual void recupper(Item* item);
-    int vie = 1000;
+    int vie = 200;
+    virtual void soigner(int soin=100);
     vector<Item*> inventaire;
+    int Or = 0;
 
-private:
+
 
 
 };
