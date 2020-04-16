@@ -321,7 +321,6 @@ int Room::menu()
 
 
     while(ascii_value != 13){
-
         PlaySound(TEXT("sound60.wav"),NULL,SND_ASYNC);
 
         this->persoStats();
