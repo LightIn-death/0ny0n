@@ -175,8 +175,8 @@ Player::Player()
     string Nom;
     cout << "Comment vous appeler vous, prince du royaume d'0ny0n ?\n";
     cin >> Nom;
-    this->nom = "Prince " + Nom;
-    cout << "D'accord ! Vous devez montez au 10eme etage pour sauver la princesse " << this->nom <<" !\n";
+    this->nom = Nom;
+    cout << "D'accord ! Vous devez montez au 10eme etage pour sauver la princesse, Prince " << this->nom <<" !\n";
     _getch();
     system("cls");
     this->defense = 10;

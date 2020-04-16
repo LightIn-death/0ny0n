@@ -14,7 +14,7 @@ class Room
         int menu();
 
         static void Color(int couleurDuTexte,int couleurDeFond);
-
+        void base(Player* joueur);
 
     protected:
     void monstre_attaque();
@@ -22,6 +22,7 @@ class Room
     void persoStats();
     void dessinerAscii();
     void AsciiArtMonster();
+
 
 
 
