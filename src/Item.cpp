@@ -84,7 +84,22 @@ Potion::Potion()
 
 
     this->nom = "Potion";
-    this->vie = 10;
+    int ra = (rand() % 3) +1;
+    switch (ra){
+case 1:
+
+        this->vie = 25;
+    break;
+case 2:
+        this->vie = 50;
+    break;
+case 3:
+        this->vie = 100;
+    break;
+
+    }
+
+
     this->defense = 0;
     this->attaque = 0;
     this->generatePosition();
@@ -115,7 +130,7 @@ Chemise::Chemise()
 {
     this->nom = "Chemise";
     this->vie = 0;
-    this->defense = 1;
+    this->defense = 10;
     this->attaque = 0;
        this->generatePosition();
 
@@ -134,7 +149,7 @@ Kevlar::Kevlar()
 {
     this->nom = "Kevlar";
     this->vie = 0;
-    this->defense = 3;
+    this->defense = 5;
     this->attaque = 0;
        this->generatePosition();
 
@@ -151,7 +166,7 @@ Cuirasse::Cuirasse()
 {
    this->nom= "Cuirasse";
     this->vie = 0;
-    this->defense = 5;
+    this->defense = 2;
     this->attaque = 0;
        this->generatePosition();
 
@@ -179,7 +194,7 @@ Baton::Baton()
     this->nom = "Baton";
     this->vie = 0;
     this->defense = 0;
-    this->attaque = 1;
+    this->attaque = 2;
        this->generatePosition();
 
 
@@ -197,7 +212,7 @@ Clavier::Clavier()
 this->nom = "Clavier";
     this->vie = 0;
     this->defense = 0;
-    this->attaque = 3;
+    this->attaque = 100;
        this->generatePosition();
 
                     string description[4] = {
@@ -214,7 +229,7 @@ Epee::Epee()
     this->nom= "Epee";
     this->vie = 0;
     this->defense = 0;
-    this->attaque = 5;
+    this->attaque = 15;
        this->generatePosition();
                      string description[4] = {
             "Enfin une vrais arme dans ce jeu ! c'est pas trop tot !",
