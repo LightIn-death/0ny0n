@@ -141,19 +141,23 @@ void Room::base(Player* joueur)
         char key_press;
         int ascii_value = 0;
         int choix = 1;
-        while(ascii_value != 13){
+        while(ascii_value != 13)
+        {
             system("cls");
             int i = 1;
-              cout << "vous avez actuellement ";
-              this->Color(6,0);
-              cout << joueur->Or;
-              this->Color(7,0);
-              cout << " pieces d'or ! \n\n\n";
+            cout << "vous avez actuellement ";
+            this->Color(6,0);
+            cout << joueur->Or;
+            this->Color(7,0);
+            cout << " pieces d'or ! \n\n\n";
             if(joueur->Or >= 50)
             {
-                if (choix == i){
+                if (choix == i)
+                {
                     cout << "[X] ";
-                }else{
+                }
+                else
+                {
                     cout << "[ ] ";
                 }
                 cout << " Vous pouvez augmenter votre vie de 50 PV " << endl;
@@ -166,48 +170,56 @@ void Room::base(Player* joueur)
                 this->Color(7,0);
             }
 
-            if (choix == i){
-                    cout << "[X] ";
-                }else{
-                    cout << "[ ] ";
-                }
+            if (choix == i)
+            {
+                cout << "[X] ";
+            }
+            else
+            {
+                cout << "[ ] ";
+            }
             cout << " Retourn� combattre dans la tours." << endl << endl << endl;
 
             key_press=_getch();
             ascii_value=key_press;
 
-            if(ascii_value==72){
+            if(ascii_value==72)
+            {
                 //std::cin.clear();
                 choix -= 1;
-                if (choix < 1){
+                if (choix < 1)
+                {
                     choix = i;
                 }
-            }else if(ascii_value==80){
+            }
+            else if(ascii_value==80)
+            {
 
                 choix += 1;
-                if (choix > i){
+                if (choix > i)
+                {
                     choix = 1;
                 }
             }
 
         }
 
-            if(joueur->Or >= 50 && choix == 1)
-            {
-                cout <<" Vous avez ajoute";
-                this->Color(2,0);
-                cout << "50";
-                this->Color(7,0);
-                cout << "pv !" << endl;
-                joueur->setVie_Max(50);
-                joueur->Or-=50;
-            }
-            else
-            {
-                cout << " Preparez-vous au combat !" << endl;
-                running = false;
-            }
-            _getch();
+        if(joueur->Or >= 50 && choix == 1)
+        {
+            cout <<" Vous avez ajoute";
+            this->Color(2,0);
+            cout << "50";
+            this->Color(7,0);
+            cout << "pv !" << endl;
+            joueur->setVie_Max(50);
+            joueur->Or-=50;
+        }
+        else
+        {
+            cout << " Preparez-vous au combat !" << endl;
+            running = false;
+        }
+        _getch();
     }
 }
 
@@ -217,9 +229,12 @@ void Room::monstre_attaque()
     for(m=0; m<this->mobs.size(); m++)
     {
         int vie_afficher = 0;
-        if ((this->mobs[m]->getAttaque() - this->joueur->getDefense()) > 0){
+        if ((this->mobs[m]->getAttaque() - this->joueur->getDefense()) > 0)
+        {
             vie_afficher = (this->mobs[m]->getAttaque() - this->joueur->getDefense());
-        }else{
+        }
+        else
+        {
             vie_afficher = 0;
         }
 
@@ -239,7 +254,8 @@ void Room::monstre_attaque()
         this->Color(7,0);
         cout << " points de degats ";
 
-        if (vie_afficher == 0){
+        if (vie_afficher == 0)
+        {
             cout << "grace a votre defense de fer ";
         }
         cout << "! " << endl;
@@ -311,7 +327,8 @@ int Room::menu()
     char key_press;
     int ascii_value = 0;
 
-    while(ascii_value != 13){
+    while(ascii_value != 13)
+    {
         this->persoStats();
         this->dessinerAscii();
         this->AsciiArtMonster();
@@ -325,9 +342,12 @@ int Room::menu()
         for(m=0; m<this->mobs.size(); m++)
         {
 
-            if (choix == m+1){
+            if (choix == m+1)
+            {
                 cout << "[X] ";
-            }else{
+            }
+            else
+            {
                 cout << "[ ] ";
             }
 
@@ -368,9 +388,12 @@ int Room::menu()
         }
         for(i=0; i<this->loots.size(); i++)
         {
-            if (choix == m+i+1){
+            if (choix == m+i+1)
+            {
                 cout << "[X] ";
-            }else{
+            }
+            else
+            {
                 cout << "[ ] ";
             }
             this->Color(11,0);
@@ -382,42 +405,60 @@ int Room::menu()
         int a = this->loots.size();
 
 
-        if (choix == m+i+1){
-                cout << "[X] ";
-            }else{
-                cout << "[ ] ";
-            }
+        if (choix == m+i+1)
+        {
+            cout << "[X] ";
+        }
+        else
+        {
+            cout << "[ ] ";
+        }
         cout << "Inventaire" << endl;
 
-        if (choix == i+m+2){
-                cout << "[X] ";
-            }else{
-                cout << "[ ] ";
-            }
+        if (choix == i+m+2)
+        {
+            cout << "[X] ";
+        }
+        else
+        {
+            cout << "[ ] ";
+        }
         cout << "Retour a la base" << endl;
 
         if(this->mobs.empty())
         {
             etage_clear = true;
-            if (choix == m+i+3){
+            if (choix == m+i+3)
+            {
                 cout << "[X] ";
-            }else{
+            }
+            else
+            {
                 cout << "[ ] ";
             }
             cout << "Etage suivant" << endl;
         }
 
-        if (etage_clear == true){
-            if (choix == m+i+4){
+        if (etage_clear == true)
+        {
+            if (choix == m+i+4)
+            {
                 cout << "[X] ";
-            }else{
+            }
+            else
+            {
                 cout << "[ ] ";
             }
             cout << "Quitter " << endl;
-        }else if(etage_clear == false) {
-            if (choix == m+i+3){
+        }
+        else if(etage_clear == false)
+        {
+            if (choix == m+i+3)
+            {
                 cout << "[X] ";
-            }else{
+            }
+            else
+            {
                 cout << "[ ] ";
             }
             cout << "Quitter " << endl;
@@ -425,23 +466,41 @@ int Room::menu()
 
         std::cin.clear();
 
+
         key_press=_getch();
+
+        if (  key_press==-32  )
+        {
+            key_press=_getch();
+
+        }
+
+
         ascii_value=key_press;
 
-        if(ascii_value==72){
+        if(ascii_value==72)
+        {
 
             choix -= 1;
-            if (choix < 1 && etage_clear == false){
+            if (choix < 1 && etage_clear == false)
+            {
                 choix = m+i+3;
-            }else if (choix < 1 && etage_clear == true){
+            }
+            else if (choix < 1 && etage_clear == true)
+            {
                 choix = m+i+4;
             }
-        }else if(ascii_value==80){
+        }
+        else if(ascii_value==80)
+        {
 
             choix += 1;
-            if (choix > m+i+3 && etage_clear == false){
+            if (choix > m+i+3 && etage_clear == false)
+            {
                 choix = 1;
-            }else if (choix > m+i+4 && etage_clear == true){
+            }
+            else if (choix > m+i+4 && etage_clear == true)
+            {
                 choix = 1;
             }
         }
@@ -479,12 +538,12 @@ int Room::menu()
             int money = ( rand() % int( this->mobs[mob_choice]->getVie_Max() /2)  ) +1;
             this->mobs.erase(mobs.begin()+(mob_choice));
             this->joueur->Or += money;
-                 cout << "Vous avez gagne ";
-                 this->Color(6,0);
-                 cout << money;
-                 this->Color(7,0);
-                 cout <<" pieces d\'Or !\n";
-                 _getch();
+            cout << "Vous avez gagne ";
+            this->Color(6,0);
+            cout << money;
+            this->Color(7,0);
+            cout <<" pieces d\'Or !\n";
+            _getch();
         }
     }
     else if(loot_choice!= -1)
@@ -501,7 +560,7 @@ int Room::menu()
     {
         invotory=true;
 
-        while (this->inventaire()){}
+        while (this->inventaire()) {}
 
     }
     else if(choix== ext_choice+1)
@@ -512,7 +571,8 @@ int Room::menu()
     {
         return this->etage+1;
     }
-    else if ((choix == ext_choice+2) || (choix == ext_choice+3) ){
+    else if ((choix == ext_choice+2) || (choix == ext_choice+3) )
+    {
         exit(57005);
     }
     else
@@ -524,7 +584,7 @@ int Room::menu()
     if(!invotory && this->mobs.size()!=0)
     {
         this->monstre_attaque();
-             _getch();
+        _getch();
     }
     if(this->joueur->vie<=0)
     {
@@ -545,7 +605,8 @@ int Room::inventaire()
 
     char key_press;
     int ascii_value = 0;
-    while(ascii_value != 13){
+    while(ascii_value != 13)
+    {
 
         system("cls");
         int i = 0;
@@ -555,9 +616,12 @@ int Room::inventaire()
         for(; i<this->joueur->inventaire.size(); i++)
         {
 
-             if (choix == i+1){
+            if (choix == i+1)
+            {
                 cout << "[X] ";
-            }else{
+            }
+            else
+            {
                 cout << "[ ] ";
             }
 
@@ -595,11 +659,14 @@ int Room::inventaire()
 
 
         }
-        if (choix == i+1){
-                cout << "[X] ";
-            }else{
-                cout << "[ ] ";
-            }
+        if (choix == i+1)
+        {
+            cout << "[X] ";
+        }
+        else
+        {
+            cout << "[ ] ";
+        }
 
         cout << " Retour" << endl;
 
@@ -609,15 +676,20 @@ int Room::inventaire()
         key_press=_getch();
         ascii_value=key_press;
 
-        if(ascii_value==72){
+        if(ascii_value==72)
+        {
             //std::cin.clear();
             choix -= 1;
-            if (choix < 1){
+            if (choix < 1)
+            {
                 choix = i+1;
             }
-        }else if(ascii_value==80){
+        }
+        else if(ascii_value==80)
+        {
             choix += 1;
-            if (choix > i+1){
+            if (choix > i+1)
+            {
                 choix = 1;
             }
         }
@@ -636,7 +708,9 @@ int Room::inventaire()
 
         this->joueur->inventaire.erase((this->joueur->inventaire.begin()) + (choix));
         return 1;
-    }else{
+    }
+    else
+    {
         return 0;
     }
 
@@ -649,7 +723,7 @@ int Room::inventaire()
 
 void Room::dessinerAscii()
 {
-this->Color(13,6);
+    this->Color(13,6);
     cout << endl;
     cout << "      Etage Suivant      " << endl;
     cout << "###########[X]###########" << endl;
@@ -693,26 +767,27 @@ void Room::AsciiArtMonster()
 {
 
 
-string Art[20] = {   "               "
-                    ,"\\()7L/ "
-                    ,"  cgD                            __ _ "
-                    ,"  |\\(                          .'  Y '>, "
-                    ,"   \\ \\                        / _   _   \\"
-                    ,"    \\\\\                       )(_) (_)(|} "
-                    ,"     \\\\\\                      {  4A   } / "
-                    ,"      \\\\\\                      \\uLuJJ/\\l "
-                    ,"       \\\\\\                     |3    p)/ "
-                    ,"        \\\\\\___ __________      /nnm_n// "
-                    ,"         c7___-__,__-)\\,__)(_.  \\_>-<_/D "
-                    ,"               //V     \\__-._.__G G_c__.-__<_/ ( \\"
-                    ,"                           <_-._>__-,G_.___)\\   \\7\\ "
-                    ,"                          (_^-.__.| \\_<.__.-_ )   \\ \\ "
-                    ,"                          |-.__^\\  |^-.__.-^.\\   \\ \\ "
-                    ,"                          (^-.__^^. \\^-.__.-^.|    \\_\\"
-                    ,"                          \\^-.__^^|!|^-.__.-^.)     \\ \\"
-                    ,"                           ^-.__^^\\_|^-.__.-ç./      \\ l"
-                    ,"                           ^.__^^^>G>-.__.-^>       .--,_ "
-                    ,"                                                          "};
+    string Art[20] = {   "               "
+                         ,"\\()7L/ "
+                         ,"  cgD                            __ _ "
+                         ,"  |\\(                          .'  Y '>, "
+                         ,"   \\ \\                        / _   _   \\"
+                         ,"    \\\\\                       )(_) (_)(|} "
+                         ,"     \\\\\\                      {  4A   } / "
+                         ,"      \\\\\\                      \\uLuJJ/\\l "
+                         ,"       \\\\\\                     |3    p)/ "
+                         ,"        \\\\\\___ __________      /nnm_n// "
+                         ,"         c7___-__,__-)\\,__)(_.  \\_>-<_/D "
+                         ,"               //V     \\__-._.__G G_c__.-__<_/ ( \\"
+                         ,"                           <_-._>__-,G_.___)\\   \\7\\ "
+                         ,"                          (_^-.__.| \\_<.__.-_ )   \\ \\ "
+                         ,"                          |-.__^\\  |^-.__.-^.\\   \\ \\ "
+                         ,"                          (^-.__^^. \\^-.__.-^.|    \\_\\"
+                         ,"                          \\^-.__^^|!|^-.__.-^.)     \\ \\"
+                         ,"                           ^-.__^^\\_|^-.__.-ç./      \\ l"
+                         ,"                           ^.__^^^>G>-.__.-^>       .--,_ "
+                         ,"                                                          "
+                     };
 
 
 
@@ -722,18 +797,18 @@ string Art[20] = {   "               "
 
 
 
-                                            this->Color(11,0);
-           for(int j = 0; j < 20 ; j++)
+    this->Color(11,0);
+    for(int j = 0; j < 20 ; j++)
 
-{
- COORD p = { 45, 0 + j }; // 25 19
-    SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
+    {
+        COORD p = { 45, 0 + j }; // 25 19
+        SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
 
 
 
-    cout << Art[j] << endl;
+        cout << Art[j] << endl;
 
-           }
+    }
 
 
 

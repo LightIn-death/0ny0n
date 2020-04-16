@@ -7,20 +7,27 @@
 #include <thread>
 using namespace std;
 #include <ctime>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <sys/types.h>
+#include <stdio.h>
+using namespace std;
 
 
-
-void music(){
-
-PlaySound(TEXT("song.wav"),NULL,SND_ASYNC | SND_LOOP);
-
+void music()
+{
+    PlaySound(TEXT("song.wav"),NULL,SND_ASYNC | SND_LOOP);
 }
 
 int main()
 {
     srand (time(NULL));
+
     thread snd(music);
     snd.join();
+
     Menu* menu = new Menu();
     int selection;
     int debut_game = 0;
@@ -29,7 +36,6 @@ int main()
     //Nouvelle partie == 1    |   Charger partie == 0
     if (selection == 0)
     {
-
 
         int etage = 1;
         int etage_old;
