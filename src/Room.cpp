@@ -303,8 +303,7 @@ int Room::menu()
     int ascii_value = 0;
 
     while(ascii_value != 13){
-
-        PlaySound(TEXT("sound60.wav"),NULL,SND_ASYNC);
+        PlaySound(TEXT("sound60.wav"),NULL,SND_ASYNC | SND_NOWAIT);
         this->persoStats();
         this->dessinerAscii();
         this->AsciiArtMonster();
