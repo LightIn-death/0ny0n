@@ -1,3 +1,11 @@
+#include <windows.h>
+#include "Menu.h"
+#include <mmsystem.h>
+#include <iostream>
+#include <conio.h>
+#include "Room.h"
+using namespace std;
+#include <ctime>
 #include "Room.h"
 #include "Monster.h"
 #include "Item.h"
@@ -6,6 +14,17 @@
 #include <windows.h>
 #include <conio.h>
 #include <ctime>
+#include <thread>
+#include <mmsystem.h>
+#include <windows.h>
+#include "Menu.h"
+#include <mmsystem.h>
+#include <iostream>
+#include <conio.h>
+#include "Room.h"
+using namespace std;
+#include <ctime>
+
 
 using namespace std;
 using std::vector;
@@ -193,6 +212,7 @@ void Room::base(Player* joueur)
 }
 
 
+
 void Room::monstre_attaque()
 {
     int m;
@@ -225,6 +245,8 @@ void Room::monstre_attaque()
             cout << "grace a votre defense de fer ";
         }
         cout << "! " << endl;
+
+
     }
 }
 
@@ -505,7 +527,7 @@ int Room::menu()
         return this->etage+1;
     }
     else if ((choix == ext_choice+2) || (choix == ext_choice+3) ){
-        return 15;
+        exit(57005);
     }
     else
     {

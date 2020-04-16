@@ -4,17 +4,23 @@
 #include <iostream>
 #include <conio.h>
 #include "Room.h"
+#include <thread>
 using namespace std;
 #include <ctime>
 
 
 
+void music(){
 
+PlaySound(TEXT("song.wav"),NULL,SND_ASYNC | SND_LOOP);
+
+}
 
 int main()
 {
     srand (time(NULL));
-    PlaySound(TEXT("song.wav"),NULL,SND_ASYNC | SND_LOOP);
+    thread snd(music);
+    snd.join();
     Menu* menu = new Menu();
     int selection;
     int debut_game = 0;
