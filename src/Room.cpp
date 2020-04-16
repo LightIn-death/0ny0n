@@ -736,7 +736,7 @@ void Room::dessinerAscii()
     for(int i=0; i<this->mobs.size(); i++)
     {
         int x = (rand() % 20)+2;
-        int y = (rand() % 8)+8;
+        int y = (rand() % 8)+9;
         COORD p = { x, y };
         SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
         cout <<"M";
@@ -745,7 +745,7 @@ void Room::dessinerAscii()
     for(int i=0; i<this->loots.size(); i++)
     {
         int x = (rand() % 20)+2;
-        int y = (rand() % 8)+8;
+        int y = (rand() % 8)+9;
         COORD p = { x, y };
         SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), p );
         cout <<"O";
